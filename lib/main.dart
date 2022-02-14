@@ -25,4 +25,10 @@ class MyApp extends StatelessWidget {
   }
 }
 
+AppBar defaultAppBar({required String title}) {
+  return AppBar(
+    title: Text(title),
+    centerTitle: false,
+  );
+}
 

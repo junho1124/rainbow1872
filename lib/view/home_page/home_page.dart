@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rainbow1872/main.dart';
 import 'package:rainbow1872/viewModel/home_view_model.dart';
 
 import '../../utils/my_drawer.dart';
@@ -23,10 +24,7 @@ class HomePage extends StatelessWidget {
             bottom: true,
             child: Scaffold(
               drawer: MyDrawer(name: "최준호",),
-              appBar: AppBar(
-                title: Text("홈"),
-                centerTitle: false,
-              ),
+              appBar: defaultAppBar(title: "홈"),
               body: SingleChildScrollView(
                 child: Column(
                   children: [

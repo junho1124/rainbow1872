@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class HomeViewModel extends GetxController {
   @override
   void onInit() {
+    initializeDateFormatting();
     super.onInit();
   }
 
