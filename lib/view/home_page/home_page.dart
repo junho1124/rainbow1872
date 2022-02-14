@@ -1,10 +1,5 @@
-import 'dart:math';
-import 'dart:ui';
-
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_neat_and_clean_calendar/flutter_neat_and_clean_calendar.dart';
 import 'package:get/get.dart';
 import 'package:rainbow1872/viewModel/home_view_model.dart';
 
@@ -30,6 +25,7 @@ class HomePage extends StatelessWidget {
               drawer: MyDrawer(name: "최준호",),
               appBar: AppBar(
                 title: Text("홈"),
+                centerTitle: false,
               ),
               body: SingleChildScrollView(
                 child: Column(

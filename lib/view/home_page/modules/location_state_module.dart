@@ -13,8 +13,14 @@ class LocationStateModule extends StatelessWidget {
         Container(
           height: 50,
           width: context.width * 0.5,
-          decoration: BoxDecoration(color: Colors.blueAccent),
-          child: Center(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xA4A871FD), Colors.lightBlueAccent],
+                stops: [0.2, 0.6])
+          ),
+          child: const Center(
               child: Text(
                 "여의도",
                 style: TextStyle(
