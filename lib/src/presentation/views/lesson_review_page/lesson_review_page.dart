@@ -7,7 +7,8 @@ import 'package:rainbow1872/src/presentation/widgets/tiles/lesson_tile.dart';
 
 
 class LessonReviewPage extends StatelessWidget {
-  static const String PATH = "LessonReviewPage";
+  static const String PATH = "/LessonReviewPage";
+  static const String MissingPATH = "/LessonReviewPageMissing";
   const LessonReviewPage({
     required this.isMissing,
     Key? key

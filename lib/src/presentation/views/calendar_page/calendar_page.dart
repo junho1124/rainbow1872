@@ -8,7 +8,7 @@ import 'package:rainbow1872/src/presentation/widgets/tiles/lesson_state_card.dar
 import 'package:rainbow1872/src/presentation/widgets/tiles/lesson_tile.dart';
 
 class CalendarPage extends StatelessWidget {
-  static const String PATH = "CalendarPage";
+  static const String PATH = "/CalendarPage";
   const CalendarPage({Key? key}) : super(key: key);
 
   @override

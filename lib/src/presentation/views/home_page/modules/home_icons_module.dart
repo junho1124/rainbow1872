@@ -19,10 +19,10 @@ class HomeIconsModule extends StatelessWidget {
       child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            buildHomeCard(context, assets[0], titles[0], () => Get.to(LessonReviewPage(isMissing: false))),
-            buildHomeCard(context, assets[1], titles[1], () => Get.to(LessonReviewPage(isMissing: false))),
-            buildHomeCard(context, assets[2], titles[2], () => Get.to(LessonReviewPage(isMissing: false))),
-            buildHomeCard(context, assets[3], titles[3], () => Get.to(LessonReviewPage(isMissing: false))),
+            buildHomeCard(context, assets[0], titles[0], () => Get.toNamed(LessonReviewPage.PATH)),
+            buildHomeCard(context, assets[1], titles[1], () => Get.toNamed(LessonReviewPage.PATH)),
+            buildHomeCard(context, assets[2], titles[2], () => Get.toNamed(LessonReviewPage.PATH)),
+            buildHomeCard(context, assets[3], titles[3], () => Get.toNamed(LessonReviewPage.PATH)),
           ]
       ),
     );
