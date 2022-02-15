@@ -17,7 +17,7 @@ class BannerModule extends StatelessWidget {
         options: CarouselOptions(
             autoPlay: true,
             viewportFraction: 1,
-            aspectRatio: 2.5 / 1));
+            aspectRatio: 2 / 1));
   }
 
   Container buildBanner(BuildContext context, int index) {

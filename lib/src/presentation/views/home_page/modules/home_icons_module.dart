@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rainbow1872/src/presentation/views/account_page/account_page.dart';
 import 'package:rainbow1872/src/presentation/views/lesson_review_page/lesson_review_page.dart';
+import 'package:rainbow1872/src/presentation/views/store_state_page/store_state_page.dart';
 
 class HomeIconsModule extends StatelessWidget {
   const HomeIconsModule({
@@ -17,12 +19,12 @@ class HomeIconsModule extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             buildHomeCard(context, assets[0], titles[0], () => Get.toNamed(LessonReviewPage.PATH)),
-            buildHomeCard(context, assets[1], titles[1], () => Get.toNamed(LessonReviewPage.PATH)),
-            buildHomeCard(context, assets[2], titles[2], () => Get.toNamed(LessonReviewPage.PATH)),
-            buildHomeCard(context, assets[3], titles[3], () => Get.toNamed(LessonReviewPage.PATH)),
+            buildHomeCard(context, assets[1], titles[1], () => Get.toNamed(StoreStatePage.PATH)),
+            buildHomeCard(context, assets[2], titles[2], () => Get.toNamed(AccountPage.PATH)),
+            // buildHomeCard(context, assets[3], titles[3], () => Get.toNamed(LessonReviewPage.PATH)),
           ]
       ),
     );

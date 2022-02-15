@@ -1,3 +1,4 @@
+import 'package:external_app_launcher/external_app_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rainbow1872/src/presentation/views/account_page/account_page.dart';
@@ -5,6 +6,7 @@ import 'package:rainbow1872/src/presentation/views/calendar_page/calendar_page.d
 import 'package:rainbow1872/src/presentation/views/home_page/home_page.dart';
 import 'package:rainbow1872/src/presentation/views/lesson_review_page/lesson_review_page.dart';
 import 'package:rainbow1872/src/presentation/views/reservation_page/reservation_page.dart';
+import 'package:rainbow1872/src/presentation/views/signup_page/signup_page.dart';
 import 'package:rainbow1872/src/presentation/views/store_state_page/store_state_page.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -49,10 +51,10 @@ class MyDrawer extends StatelessWidget {
                   buildDrawerTile("레슨 리뷰", () => Get.offNamed(LessonReviewPage.PATH)),
                   buildDrawerTile("미확인 레슨 리뷰", () => Get.offNamed(LessonReviewPage.MissingPATH)),
                   buildDrawerTile("레슨 예약하기", () => Get.offNamed(ReservationPage.PATH)),
-                  buildDrawerTile("스윙 모션", () {}),
+                  // buildDrawerTile("스윙 모션", () => openImpactVision()),
                   buildDrawerTile("매장 현황", () => Get.offNamed(StoreStatePage.PATH)),
                   buildDrawerTile("내정보", () => Get.offNamed(AccountPage.PATH)),
-                  buildDrawerTile("로그아웃", () {}),
+                  buildDrawerTile("로그아웃", () => Get.offNamed(SignupPage.PATH)),
                 ],
               )
             ],
@@ -75,5 +77,18 @@ class MyDrawer extends StatelessWidget {
         ),
       ),
     );
+  }
+  
+  Future openImpactVision() async {
+    print("0123");
+    print(await LaunchApp.isAppInstalled(iosUrlScheme: "kakaotalk://"));
+    await LaunchApp.openApp(
+        iosUrlScheme: "kakaotalk://",
+      appStoreLink: "https://apps.apple.com/kr/app/myiv/id1522298004",
+      openStore: true
+    );
+    // if(await LaunchApp.isAppInstalled(iosUrlScheme: "MyIV://") == 1) {
+    //   launch("MyIV://");
+    // }
   }
 }

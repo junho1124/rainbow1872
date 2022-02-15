@@ -40,6 +40,9 @@ dependencies:
   table_calendar: ^3.0.3
   intl: ^0.17.0
   freezed_annotation:
+  external_app_launcher: ^2.0.2
+  url_launcher:
+  flutter_multi_formatter: ^2.5.1
 
 dev_dependencies:
   flutter_test:
