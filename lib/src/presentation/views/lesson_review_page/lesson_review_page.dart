@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rainbow1872/utils/lesson_tile.dart';
-import 'package:rainbow1872/utils/my_drawer.dart';
-import 'package:rainbow1872/viewModel/lesson_review_view_model.dart';
+import 'package:rainbow1872/main.dart';
+import 'package:rainbow1872/src/presentation/view_model/lesson_review_view_model.dart';
+import 'package:rainbow1872/src/presentation/widgets/my_drawer.dart';
+import 'package:rainbow1872/src/presentation/widgets/tiles/lesson_tile.dart';
 
-import '../../main.dart';
 
 class LessonReviewPage extends StatelessWidget {
+  static const String PATH = "LessonReviewPage";
   const LessonReviewPage({
     required this.isMissing,
     Key? key

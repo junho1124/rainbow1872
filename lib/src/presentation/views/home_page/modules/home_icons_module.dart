@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rainbow1872/view/lesson_review_page/lesson_review_page.dart';
+import 'package:rainbow1872/src/presentation/views/lesson_review_page/lesson_review_page.dart';
 
 class HomeIconsModule extends StatelessWidget {
   const HomeIconsModule({

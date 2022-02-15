@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
-import 'package:rainbow1872/utils/lesson_state_card.dart';
+import 'package:rainbow1872/src/presentation/widgets/tiles/lesson_state_card.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class CalendarModule extends StatelessWidget {
-  const CalendarModule({
+class WeeklyCalendarModule extends StatelessWidget {
+  const WeeklyCalendarModule({
     Key? key,
   }) : super(key: key);
 

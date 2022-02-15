@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:rainbow1872/viewModel/useCase/monthly_calendar_use_case.dart';
+import 'package:rainbow1872/src/domain/use_case/monthly_calendar_use_case.dart';
 
 class CalendarViewModel extends GetxController {
 
@@ -12,8 +12,8 @@ class CalendarViewModel extends GetxController {
   @override
   void onInit() {
     now.value = format.format(DateTime.now());
-    calendarUseCase.state.stream.listen((event) {
-      now.value = format.format(event.selectDay);
+    calendarUseCase.selectDay.stream.listen((event) {
+      now.value = format.format(event);
     });
     super.onInit();
   }

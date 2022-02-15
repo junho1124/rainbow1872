@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rainbow1872/view/calendar_page/calendar_page.dart';
-import 'package:rainbow1872/view/home_page/home_page.dart';
-import 'package:rainbow1872/view/lesson_review_page/lesson_review_page.dart';
+import 'package:rainbow1872/src/presentation/views/calendar_page/calendar_page.dart';
+import 'package:rainbow1872/src/presentation/views/home_page/home_page.dart';
+import 'package:rainbow1872/src/presentation/views/lesson_review_page/lesson_review_page.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({
@@ -44,7 +44,7 @@ class MyDrawer extends StatelessWidget {
                   buildDrawerTile("홈", () => Get.off(HomePage())),
                   buildDrawerTile("캘린더", () => Get.off(CalendarPage())),
                   buildDrawerTile("레슨 리뷰", () => Get.off(LessonReviewPage(isMissing: false))),
-                  buildDrawerTile("미확인 레슨 리뷰", () => LessonReviewPage(isMissing: true)),
+                  buildDrawerTile("미확인 레슨 리뷰", () => Get.off(LessonReviewPage(isMissing: true))),
                   buildDrawerTile("레슨 예약하기", () {}),
                   buildDrawerTile("스윙 모션", () {}),
                   buildDrawerTile("매장 현황", () {}),

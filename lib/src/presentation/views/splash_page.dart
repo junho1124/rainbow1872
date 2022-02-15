@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rainbow1872/viewModel/splash_view_model.dart';
+import 'package:rainbow1872/src/presentation/view_model/splash_view_model.dart';
 
 class SplashPage extends StatelessWidget {
+  static const String PATH = "/";
   const SplashPage({Key? key}) : super(key: key);
 
   @override

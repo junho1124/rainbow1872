@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rainbow1872/main.dart';
-import 'package:rainbow1872/utils/lesson_state_card.dart';
-import 'package:rainbow1872/utils/lesson_tile.dart';
-import 'package:rainbow1872/utils/monthly_calrendar.dart';
-import 'package:rainbow1872/utils/my_drawer.dart';
-import 'package:rainbow1872/viewModel/calendar_view_model.dart';
+import 'package:rainbow1872/src/presentation/view_model/calendar_view_model.dart';
+import 'package:rainbow1872/src/presentation/widgets/monthly_calrendar.dart';
+import 'package:rainbow1872/src/presentation/widgets/my_drawer.dart';
+import 'package:rainbow1872/src/presentation/widgets/tiles/lesson_state_card.dart';
+import 'package:rainbow1872/src/presentation/widgets/tiles/lesson_tile.dart';
 
 class CalendarPage extends StatelessWidget {
+  static const String PATH = "CalendarPage";
   const CalendarPage({Key? key}) : super(key: key);
 
   @override
