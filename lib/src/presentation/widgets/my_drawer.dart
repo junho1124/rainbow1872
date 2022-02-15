@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rainbow1872/src/presentation/views/account_page/account_page.dart';
 import 'package:rainbow1872/src/presentation/views/calendar_page/calendar_page.dart';
 import 'package:rainbow1872/src/presentation/views/home_page/home_page.dart';
 import 'package:rainbow1872/src/presentation/views/lesson_review_page/lesson_review_page.dart';
@@ -43,14 +44,14 @@ class MyDrawer extends StatelessWidget {
               ListView(
                 shrinkWrap: true,
                 children: [
-                  buildDrawerTile("홈", () => Get.off(HomePage())),
-                  buildDrawerTile("캘린더", () => Get.off(CalendarPage())),
+                  buildDrawerTile("홈", () => Get.offNamed(HomePage.PATH)),
+                  buildDrawerTile("캘린더", () => Get.offNamed(CalendarPage.PATH)),
                   buildDrawerTile("레슨 리뷰", () => Get.offNamed(LessonReviewPage.PATH)),
                   buildDrawerTile("미확인 레슨 리뷰", () => Get.offNamed(LessonReviewPage.MissingPATH)),
                   buildDrawerTile("레슨 예약하기", () => Get.offNamed(ReservationPage.PATH)),
                   buildDrawerTile("스윙 모션", () {}),
                   buildDrawerTile("매장 현황", () => Get.offNamed(StoreStatePage.PATH)),
-                  buildDrawerTile("내정보", () {}),
+                  buildDrawerTile("내정보", () => Get.offNamed(AccountPage.PATH)),
                   buildDrawerTile("로그아웃", () {}),
                 ],
               )

@@ -43,27 +43,18 @@ class UserInfoModule extends StatelessWidget {
             ),
             Positioned(
               top: 0,
-              right: 0,
+              right: 8,
               child: Row(
-                children: const [
-                  Icon(Icons.call, size: 40),
-                  Icon(Icons.chat, size: 40),
+                children: [
+                  Image.asset("assets/icon_call.png", height: 40),
+                  Image.asset("assets/icon_chat.png", height: 40),
                 ],
               ),
             )
           ],
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              Icon(Icons.sticky_note_2_outlined, size: 50),
-              SizedBox(width: 8),
-              Text("~~개의 미확인 레슨 노트가 있습니다.")
-            ],
-          ),
-        ),
       ],
     );
   }
 }
+

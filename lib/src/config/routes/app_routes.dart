@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rainbow1872/src/presentation/views/account_page/account_page.dart';
 import 'package:rainbow1872/src/presentation/views/calendar_page/calendar_page.dart';
 import 'package:rainbow1872/src/presentation/views/home_page/home_page.dart';
 import 'package:rainbow1872/src/presentation/views/lesson_review_page/lesson_review_page.dart';
@@ -24,6 +25,8 @@ class AppRoutes {
         return _getRoute(LessonReviewPage(isMissing: false));
       case "/StoreStatePage" :
         return _getRoute(StoreStatePage());
+      case "/AccountPage" :
+        return _getRoute(AccountPage());
       default :
         return _getRoute(SplashPage());
     }
