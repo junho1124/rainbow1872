@@ -35,13 +35,18 @@ class ReservationPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                       Text(viewModel.timeTable.keys.toList()[index], style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
-                      Container(
-                        height: 40,
-                        width: 200,
-                        decoration: BoxDecoration(
-                          color: viewModel.timeTable.values.toList()[index] ? Colors.blueGrey : Colors.red
-                        ),
-                        child: Center(child: Text(viewModel.timeTable.values.toList()[index] ? "예약하기" : "예약불가", style: TextStyle(color: Colors.white,fontSize: 16),)),)
+                      InkWell(
+                        onTap: () {
+                          viewModel.showReservationDialog(context, index);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: context.width * 0.6,
+                          decoration: BoxDecoration(
+                            color: viewModel.timeTable.values.toList()[index] ? Colors.blueGrey : Colors.red
+                          ),
+                          child: Center(child: Text(viewModel.timeTable.values.toList()[index] ? "예약하기" : "예약불가", style: TextStyle(color: Colors.white,fontSize: 16),)),),
+                      )
                     ],),)),
               )
             ],
