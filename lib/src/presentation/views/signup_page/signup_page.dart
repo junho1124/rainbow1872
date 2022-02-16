@@ -16,18 +16,27 @@ class SignupPage extends StatelessWidget {
     return GetBuilder<SignupViewModel>(
         init: SignupViewModel(),
         builder: (viewModel) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text("회원 가입 하기"),
-            ),
-            resizeToAvoidBottomInset: false,
-            body: SizedBox(
-              height: context.height,
-              child: Column(
-                children: [
-                  UserInputModule(viewModel: viewModel),
-                  GoLoginModule()
-                ],
+          return GestureDetector(
+            onTap: () {
+              FocusScopeNode currentFocus = FocusScope.of(context);
+
+              if(!currentFocus.hasPrimaryFocus) {
+                currentFocus.unfocus();
+              }
+            },
+            child: Scaffold(
+              appBar: AppBar(
+                title: Text("회원 가입 하기"),
+              ),
+              resizeToAvoidBottomInset: false,
+              body: SizedBox(
+                height: context.height,
+                child: Column(
+                  children: [
+                    UserInputModule(viewModel: viewModel),
+                    GoLoginModule()
+                  ],
+                ),
               ),
             ),
           );

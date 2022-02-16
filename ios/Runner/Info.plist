@@ -23,8 +23,6 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>MyIV</string>
-		<string>kakaotalk</string>
-		<string>zzoin</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

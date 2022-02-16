@@ -9,7 +9,10 @@ class AppTheme {
           foregroundColor: Colors.black,
           elevation: 0.5
       ),
-      splashColor: Colors.transparent
+      splashColor: Colors.transparent,
+      buttonTheme: ButtonThemeData(
+        buttonColor: Colors.transparent,
+      ),
     );
   }
 }

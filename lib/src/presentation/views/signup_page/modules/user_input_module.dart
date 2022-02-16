@@ -27,6 +27,7 @@ class UserInputModule extends StatelessWidget {
               width: context.width,
               child: TextField(
                 onTap: () => viewModel.onFocus(0),
+                controller: viewModel.controllers[0],
                 focusNode: viewModel.nodes[0],
                 keyboardType: TextInputType.emailAddress,
                 autofocus: true,
@@ -39,6 +40,7 @@ class UserInputModule extends StatelessWidget {
               width: context.width,
               child: TextField(
                 onTap: () => viewModel.onFocus(1),
+                controller: viewModel.controllers[1],
                 focusNode: viewModel.nodes[1],
                 onSubmitted: (_) => viewModel.nextFocus(),
               )
@@ -49,6 +51,7 @@ class UserInputModule extends StatelessWidget {
               width: context.width,
               child: TextField(
                 onTap: () => viewModel.onFocus(2),
+                controller: viewModel.controllers[2],
                 keyboardType: TextInputType.number,
                 inputFormatters: [
                   MaskedInputFormatter("###-####-####")
@@ -63,6 +66,7 @@ class UserInputModule extends StatelessWidget {
               width: context.width,
               child: TextField(
                 onTap: () => viewModel.onFocus(3),
+                controller: viewModel.controllers[3],
                 obscureText: true,
                 focusNode: viewModel.nodes[3],
                 onSubmitted: (_) => viewModel.nextFocus(),
@@ -74,20 +78,23 @@ class UserInputModule extends StatelessWidget {
               width: context.width,
               child: TextField(
                 onTap: () => viewModel.onFocus(4),
+                controller: viewModel.controllers[4],
                 obscureText: true,
                 focusNode: viewModel.nodes[4],
-                onSubmitted: (_) => viewModel.nextFocus(),
               )
           ),
           const SizedBox(height: 30),
-          Container(
-            height: 50,
-            width: context.width,
-            decoration: BoxDecoration(
-                color: Color(0xFF00D976),
-                borderRadius: BorderRadius.circular(20)
+          InkWell(
+            onTap: () => viewModel.signup(),
+            child: Container(
+              height: 50,
+              width: context.width,
+              decoration: BoxDecoration(
+                  color: Color(0xFF00D976),
+                  borderRadius: BorderRadius.circular(20)
+              ),
+              child: const Center(child: Text("회원 가입", style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w500),)),
             ),
-            child: const Center(child: Text("회원 가입", style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w500),)),
           ),
         ],
       ),

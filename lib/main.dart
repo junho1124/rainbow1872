@@ -1,9 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:rainbow1872/src/config/routes/app_routes.dart';
 import 'package:rainbow1872/src/config/themes/app_theme.dart';
+import 'package:rainbow1872/src/core/utils/log.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await GetStorage.init();
+  Log.init();
   runApp(const MyApp());
 }
 
