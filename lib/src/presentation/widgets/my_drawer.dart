@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:rainbow1872/src/data/models/user.dart';
 import 'package:rainbow1872/src/presentation/views/account_page/account_page.dart';
 import 'package:rainbow1872/src/presentation/views/calendar_page/calendar_page.dart';
 import 'package:rainbow1872/src/presentation/views/home_page/home_page.dart';
@@ -10,15 +12,16 @@ import 'package:rainbow1872/src/presentation/views/store_state_page/store_state_
 import 'package:url_launcher/url_launcher.dart';
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({
-    required this.name,
+  MyDrawer({
     Key? key,
   }) : super(key: key);
 
-  final String name;
+  final _userBox = GetStorage(User.boxName);
 
   @override
   Widget build(BuildContext context) {
+    final User user = _userBox.read(User.boxName);
+    final name = user.name;
     return SafeArea(
       top: true,
       child: Drawer(

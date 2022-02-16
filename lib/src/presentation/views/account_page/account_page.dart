@@ -10,7 +10,7 @@ class AccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MyDrawer(name: "최준호"),
+      drawer: MyDrawer(),
       appBar: defaultAppBar(title: "내 회원권 정보"),
       body: Column(
         children: [

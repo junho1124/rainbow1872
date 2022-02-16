@@ -1,9 +1,15 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:rainbow1872/src/data/models/user.dart';
 
 class HomeViewModel extends GetxController {
+  final _userBox = GetStorage(User.boxName);
+
+  late User user;
   @override
-  void onInit() {
+  void onInit() async {
+    user = await _userBox.read(User.boxName);
     initializeDateFormatting();
     super.onInit();
   }

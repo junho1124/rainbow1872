@@ -17,7 +17,7 @@ class CalendarPage extends StatelessWidget {
         init: CalendarViewModel(),
         builder: (viewModel) {
           return Scaffold(
-            drawer: MyDrawer(name: "최준호"),
+            drawer: MyDrawer(),
             appBar: defaultAppBar(title: "일정 확인하기"),
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

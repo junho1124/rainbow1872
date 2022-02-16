@@ -16,7 +16,7 @@ class ReservationPage extends StatelessWidget {
       init: ReservationViewModel(),
       builder: (viewModel) {
         return Scaffold(
-          drawer: MyDrawer(name: "최준호"),
+          drawer: MyDrawer(),
           appBar: defaultAppBar(title: "예약"),
           body: Column(
             children: [

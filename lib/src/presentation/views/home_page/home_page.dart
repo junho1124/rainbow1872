@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
             top: true,
             bottom: true,
             child: Scaffold(
-              drawer: MyDrawer(name: "최준호",),
+              drawer: MyDrawer(),
               appBar: defaultAppBar(title: "홈"),
               body: SingleChildScrollView(
                 child: Column(

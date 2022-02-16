@@ -10,7 +10,7 @@ class StoreStatePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MyDrawer(name: "최준호"),
+      drawer: MyDrawer(),
       appBar: defaultAppBar(title: "예약"),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

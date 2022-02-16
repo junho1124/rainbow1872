@@ -22,7 +22,7 @@ class LessonReviewPage extends StatelessWidget {
       init: LessonReviewViewModel(isMissing: isMissing),
       builder: (context) {
         return Scaffold(
-          drawer: MyDrawer(name: "최준호"),
+          drawer: MyDrawer(),
           appBar: defaultAppBar(title: "레슨 리뷰"),
           body: ListView.builder(
               itemCount: 5,
