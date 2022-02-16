@@ -10,6 +10,7 @@ class User with _$User {
   factory User({
     required String ableReservation,
     required bool available,
+    required String branch,
     required int birth,
     required String email,
     required String gender,
@@ -26,7 +27,7 @@ class User with _$User {
     required String phone,
     required int point,
     required String proUid,
-    required String profileImg,
+    String? profileImg,
     required String uid,
   }) = _User;
 

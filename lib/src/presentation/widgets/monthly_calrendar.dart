@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:rainbow1872/src/domain/use_case/monthly_calendar_use_case.dart';
+import 'package:rainbow1872/src/domain/use_case/calendar_use_case.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class MonthlyCalendarModule extends StatelessWidget {
@@ -9,7 +9,7 @@ class MonthlyCalendarModule extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final MonthlyCalendarUseCase useCase;
+  final CalendarUseCase useCase;
 
   @override
   Widget build(BuildContext context) {

@@ -26,19 +26,24 @@ class HomePage extends StatelessWidget {
             child: Scaffold(
               drawer: MyDrawer(),
               appBar: defaultAppBar(title: "홈"),
-              body: SingleChildScrollView(
+              body: Obx(() => viewModel.isLoaded.isTrue ? SingleChildScrollView(
                 child: Column(
                   children: [
-                    LocationStateModule(),
-                    BannerModule(),
-                    UserInfoModule(),
-                    MissingLessonModule(),
-                    WeeklyCalendarModule(),
+                    LocationStateModule(viewModel: viewModel),
+                    BannerModule(banners: viewModel.banners),
+                    UserInfoModule(user: viewModel.user, manager: viewModel.manager),
+                    MissingLessonModule(missingLessons: viewModel.missingLessons),
+                    WeeklyCalendarModule(useCase: viewModel.calendarUseCase, matchLessons: viewModel.matchLessons,),
                     SizedBox(height: 20),
                     HomeIconsModule(assets: viewModel.assets, titles: viewModel.titles,)
                   ],
                 ),
-              ),
+              ) : Container()),
+              // floatingActionButton: InkWell(
+              //   onTap: () {
+              //     viewModel.addSample();
+              //   },
+              //     child: Icon(Icons.add_circle_outline_outlined)),
             ),
           );
         });

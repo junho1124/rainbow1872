@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class MonthlyCalendarUseCase {
+class CalendarUseCase {
   final Rx<DateTime> focusDay = DateTime.now().obs;
   final Rx<DateTime> selectDay = DateTime.now().obs;
 

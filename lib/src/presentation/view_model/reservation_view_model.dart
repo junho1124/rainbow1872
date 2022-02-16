@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:rainbow1872/src/domain/use_case/monthly_calendar_use_case.dart';
+import 'package:rainbow1872/src/domain/use_case/calendar_use_case.dart';
 
 class ReservationViewModel extends GetxController {
-  MonthlyCalendarUseCase calendarUseCase = MonthlyCalendarUseCase();
+  CalendarUseCase calendarUseCase = CalendarUseCase();
 
   final format = DateFormat("yy년 MM월 dd일");
   final _controller = TextEditingController();

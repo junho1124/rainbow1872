@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:rainbow1872/src/data/models/lesson.dart';
 
-Widget buildLessonStateCard() {
+Widget buildNoLessonCard() {
   return Row(
     children: [
       Image.asset(
@@ -21,5 +23,33 @@ Widget buildLessonStateCard() {
         ],
       )
     ],
+  );
+}
+
+Widget buildLessonCard(Lesson lesson) {
+  final format = DateFormat("yy년 MM월 dd일 HH시 mm분");
+  return Padding(
+    padding: const EdgeInsets.only(bottom: 16),
+    child: Row(
+      children: [
+        Image.asset(
+          "assets/icon_lesson.png",
+          height: 80,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "레슨 예약 내역",
+              style: TextStyle(color: Colors.deepPurpleAccent),
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            Text("${format.format(DateTime.fromMillisecondsSinceEpoch(lesson.lessonDateTime))}에\n레슨 일정이 예약되어 있습니다.")
+          ],
+        )
+      ],
+    ),
   );
 }

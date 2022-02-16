@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rainbow1872/main.dart';
 import 'package:rainbow1872/src/presentation/widgets/my_drawer.dart';
-import 'package:rainbow1872/src/presentation/widgets/user_info_module.dart';
 
 class AccountPage extends StatelessWidget {
   static const String PATH = "/AccountPage";
@@ -36,7 +35,7 @@ class AccountPage extends StatelessWidget {
           ),
           Text("최준호 회원님", style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),),
           Divider(color: Colors.black),
-          UserInfoModule(),
+          // UserInfoModule(),
           Divider(color: Colors.black),
           Container(
             width: double.infinity,

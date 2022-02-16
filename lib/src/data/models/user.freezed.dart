@@ -25,6 +25,7 @@ class _$UserTearOff {
   _User call(
       {required String ableReservation,
       required bool available,
+      required String branch,
       required int birth,
       required String email,
       required String gender,
@@ -41,11 +42,12 @@ class _$UserTearOff {
       required String phone,
       required int point,
       required String proUid,
-      required String profileImg,
+      String? profileImg,
       required String uid}) {
     return _User(
       ableReservation: ableReservation,
       available: available,
+      branch: branch,
       birth: birth,
       email: email,
       gender: gender,
@@ -79,6 +81,7 @@ const $User = _$UserTearOff();
 mixin _$User {
   String get ableReservation => throw _privateConstructorUsedError;
   bool get available => throw _privateConstructorUsedError;
+  String get branch => throw _privateConstructorUsedError;
   int get birth => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get gender => throw _privateConstructorUsedError;
@@ -95,7 +98,7 @@ mixin _$User {
   String get phone => throw _privateConstructorUsedError;
   int get point => throw _privateConstructorUsedError;
   String get proUid => throw _privateConstructorUsedError;
-  String get profileImg => throw _privateConstructorUsedError;
+  String? get profileImg => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -110,6 +113,7 @@ abstract class $UserCopyWith<$Res> {
   $Res call(
       {String ableReservation,
       bool available,
+      String branch,
       int birth,
       String email,
       String gender,
@@ -126,7 +130,7 @@ abstract class $UserCopyWith<$Res> {
       String phone,
       int point,
       String proUid,
-      String profileImg,
+      String? profileImg,
       String uid});
 }
 
@@ -142,6 +146,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   $Res call({
     Object? ableReservation = freezed,
     Object? available = freezed,
+    Object? branch = freezed,
     Object? birth = freezed,
     Object? email = freezed,
     Object? gender = freezed,
@@ -170,6 +175,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.available
           : available // ignore: cast_nullable_to_non_nullable
               as bool,
+      branch: branch == freezed
+          ? _value.branch
+          : branch // ignore: cast_nullable_to_non_nullable
+              as String,
       birth: birth == freezed
           ? _value.birth
           : birth // ignore: cast_nullable_to_non_nullable
@@ -237,7 +246,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       profileImg: profileImg == freezed
           ? _value.profileImg
           : profileImg // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       uid: uid == freezed
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -254,6 +263,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   $Res call(
       {String ableReservation,
       bool available,
+      String branch,
       int birth,
       String email,
       String gender,
@@ -270,7 +280,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String phone,
       int point,
       String proUid,
-      String profileImg,
+      String? profileImg,
       String uid});
 }
 
@@ -287,6 +297,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   $Res call({
     Object? ableReservation = freezed,
     Object? available = freezed,
+    Object? branch = freezed,
     Object? birth = freezed,
     Object? email = freezed,
     Object? gender = freezed,
@@ -315,6 +326,10 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.available
           : available // ignore: cast_nullable_to_non_nullable
               as bool,
+      branch: branch == freezed
+          ? _value.branch
+          : branch // ignore: cast_nullable_to_non_nullable
+              as String,
       birth: birth == freezed
           ? _value.birth
           : birth // ignore: cast_nullable_to_non_nullable
@@ -382,7 +397,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       profileImg: profileImg == freezed
           ? _value.profileImg
           : profileImg // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       uid: uid == freezed
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -397,6 +412,7 @@ class _$_User implements _User {
   _$_User(
       {required this.ableReservation,
       required this.available,
+      required this.branch,
       required this.birth,
       required this.email,
       required this.gender,
@@ -413,7 +429,7 @@ class _$_User implements _User {
       required this.phone,
       required this.point,
       required this.proUid,
-      required this.profileImg,
+      this.profileImg,
       required this.uid});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
@@ -422,6 +438,8 @@ class _$_User implements _User {
   final String ableReservation;
   @override
   final bool available;
+  @override
+  final String branch;
   @override
   final int birth;
   @override
@@ -455,13 +473,13 @@ class _$_User implements _User {
   @override
   final String proUid;
   @override
-  final String profileImg;
+  final String? profileImg;
   @override
   final String uid;
 
   @override
   String toString() {
-    return 'User(ableReservation: $ableReservation, available: $available, birth: $birth, email: $email, gender: $gender, lessonAvailable: $lessonAvailable, lessonCancelCount: $lessonCancelCount, lessonMembership: $lessonMembership, lessonMembershipEnd: $lessonMembershipEnd, lessonMembershipPeriod: $lessonMembershipPeriod, lessonMembershipStart: $lessonMembershipStart, lessonMembershipType: $lessonMembershipType, lessonMembershipUsed: $lessonMembershipUsed, memo: $memo, name: $name, phone: $phone, point: $point, proUid: $proUid, profileImg: $profileImg, uid: $uid)';
+    return 'User(ableReservation: $ableReservation, available: $available, branch: $branch, birth: $birth, email: $email, gender: $gender, lessonAvailable: $lessonAvailable, lessonCancelCount: $lessonCancelCount, lessonMembership: $lessonMembership, lessonMembershipEnd: $lessonMembershipEnd, lessonMembershipPeriod: $lessonMembershipPeriod, lessonMembershipStart: $lessonMembershipStart, lessonMembershipType: $lessonMembershipType, lessonMembershipUsed: $lessonMembershipUsed, memo: $memo, name: $name, phone: $phone, point: $point, proUid: $proUid, profileImg: $profileImg, uid: $uid)';
   }
 
   @override
@@ -472,6 +490,7 @@ class _$_User implements _User {
             const DeepCollectionEquality()
                 .equals(other.ableReservation, ableReservation) &&
             const DeepCollectionEquality().equals(other.available, available) &&
+            const DeepCollectionEquality().equals(other.branch, branch) &&
             const DeepCollectionEquality().equals(other.birth, birth) &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality().equals(other.gender, gender) &&
@@ -506,6 +525,7 @@ class _$_User implements _User {
         runtimeType,
         const DeepCollectionEquality().hash(ableReservation),
         const DeepCollectionEquality().hash(available),
+        const DeepCollectionEquality().hash(branch),
         const DeepCollectionEquality().hash(birth),
         const DeepCollectionEquality().hash(email),
         const DeepCollectionEquality().hash(gender),
@@ -541,6 +561,7 @@ abstract class _User implements User {
   factory _User(
       {required String ableReservation,
       required bool available,
+      required String branch,
       required int birth,
       required String email,
       required String gender,
@@ -557,7 +578,7 @@ abstract class _User implements User {
       required String phone,
       required int point,
       required String proUid,
-      required String profileImg,
+      String? profileImg,
       required String uid}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
@@ -566,6 +587,8 @@ abstract class _User implements User {
   String get ableReservation;
   @override
   bool get available;
+  @override
+  String get branch;
   @override
   int get birth;
   @override
@@ -599,7 +622,7 @@ abstract class _User implements User {
   @override
   String get proUid;
   @override
-  String get profileImg;
+  String? get profileImg;
   @override
   String get uid;
   @override

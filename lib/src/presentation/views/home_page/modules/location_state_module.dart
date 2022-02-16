@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
+import 'package:rainbow1872/src/presentation/view_model/home_view_model.dart';
 
 class LocationStateModule extends StatelessWidget {
   const LocationStateModule({
+    required this.viewModel,
     Key? key,
   }) : super(key: key);
+
+  final HomeViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +24,10 @@ class LocationStateModule extends StatelessWidget {
                 colors: [Color(0xA4A871FD), Colors.lightBlueAccent],
                 stops: [0.2, 0.6])
           ),
-          child: const Center(
+          child: Center(
               child: Text(
-                "여의도",
-                style: TextStyle(
+                viewModel.branch.branch,
+                style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w500,
                     color: Colors.white),
@@ -33,7 +37,7 @@ class LocationStateModule extends StatelessWidget {
           height: 50,
           width: context.width * 0.5,
           child: Center(
-              child: Text("쾌적",
+              child: Text(viewModel.storeState,
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w500))),

@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:rainbow1872/src/domain/use_case/monthly_calendar_use_case.dart';
+import 'package:rainbow1872/src/domain/use_case/calendar_use_case.dart';
 
 class CalendarViewModel extends GetxController {
 
 
-  final MonthlyCalendarUseCase calendarUseCase = MonthlyCalendarUseCase();
+  final CalendarUseCase calendarUseCase = CalendarUseCase();
   final format = DateFormat("yy년 MM월 dd일");
   RxString now = "".obs;
 

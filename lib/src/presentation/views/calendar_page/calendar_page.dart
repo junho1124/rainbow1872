@@ -34,7 +34,7 @@ class CalendarPage extends StatelessWidget {
                         const Divider(color: Colors.black),
                         Obx(() => Text(viewModel.now.value)),
                         buildLessonTile(),
-                        buildLessonStateCard()
+                        buildNoLessonCard()
                       ],
                     ),
                   ),
