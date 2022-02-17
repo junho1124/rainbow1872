@@ -25,7 +25,7 @@ class _$BannerTearOff {
   _Banner call(
       {required String description,
       required String dialogTitle,
-      required String documentId,
+      required String? documentId,
       required String imageUrl,
       required String redirectUrl}) {
     return _Banner(
@@ -49,7 +49,7 @@ const $Banner = _$BannerTearOff();
 mixin _$Banner {
   String get description => throw _privateConstructorUsedError;
   String get dialogTitle => throw _privateConstructorUsedError;
-  String get documentId => throw _privateConstructorUsedError;
+  String? get documentId => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   String get redirectUrl => throw _privateConstructorUsedError;
 
@@ -65,7 +65,7 @@ abstract class $BannerCopyWith<$Res> {
   $Res call(
       {String description,
       String dialogTitle,
-      String documentId,
+      String? documentId,
       String imageUrl,
       String redirectUrl});
 }
@@ -98,7 +98,7 @@ class _$BannerCopyWithImpl<$Res> implements $BannerCopyWith<$Res> {
       documentId: documentId == freezed
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -119,7 +119,7 @@ abstract class _$BannerCopyWith<$Res> implements $BannerCopyWith<$Res> {
   $Res call(
       {String description,
       String dialogTitle,
-      String documentId,
+      String? documentId,
       String imageUrl,
       String redirectUrl});
 }
@@ -153,7 +153,7 @@ class __$BannerCopyWithImpl<$Res> extends _$BannerCopyWithImpl<$Res>
       documentId: documentId == freezed
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -184,7 +184,7 @@ class _$_Banner implements _Banner {
   @override
   final String dialogTitle;
   @override
-  final String documentId;
+  final String? documentId;
   @override
   final String imageUrl;
   @override
@@ -235,7 +235,7 @@ abstract class _Banner implements Banner {
   factory _Banner(
       {required String description,
       required String dialogTitle,
-      required String documentId,
+      required String? documentId,
       required String imageUrl,
       required String redirectUrl}) = _$_Banner;
 
@@ -246,7 +246,7 @@ abstract class _Banner implements Banner {
   @override
   String get dialogTitle;
   @override
-  String get documentId;
+  String? get documentId;
   @override
   String get imageUrl;
   @override

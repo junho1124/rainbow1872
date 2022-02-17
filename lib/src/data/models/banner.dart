@@ -8,7 +8,7 @@ class Banner with _$Banner {
   factory Banner({
     required String description,
     required String dialogTitle,
-    required String documentId,
+    required String? documentId,
     required String imageUrl,
     required String redirectUrl,
   }) = _Banner;

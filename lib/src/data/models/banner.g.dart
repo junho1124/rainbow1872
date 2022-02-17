@@ -9,7 +9,7 @@ part of 'banner.dart';
 _$_Banner _$$_BannerFromJson(Map<String, dynamic> json) => _$_Banner(
       description: json['description'] as String,
       dialogTitle: json['dialogTitle'] as String,
-      documentId: json['documentId'] as String,
+      documentId: json['documentId'] as String?,
       imageUrl: json['imageUrl'] as String,
       redirectUrl: json['redirectUrl'] as String,
     );
