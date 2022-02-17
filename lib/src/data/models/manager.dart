@@ -5,6 +5,7 @@ part 'manager.g.dart';
 
 @freezed
 class Manager with _$Manager {
+  static const String boxName = "Manager";
   factory Manager({
     required String branch,
     required String email,
