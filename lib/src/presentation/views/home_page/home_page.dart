@@ -39,11 +39,6 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ) : Container()),
-              // floatingActionButton: InkWell(
-              //   onTap: () {
-              //     viewModel.addSample();
-              //   },
-              //     child: Icon(Icons.add_circle_outline_outlined)),
             ),
           );
         });

@@ -63,10 +63,6 @@ class HomeViewModel extends GetxController {
    }
   }
 
-  void addSample() {
-    _lessonRepository.add();
-  }
-
   List<String> assets = [
     "assets/icon_review.png",
     "assets/icon_swing.png",
