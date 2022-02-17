@@ -1,36 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
+import 'package:rainbow1872/src/core/utils/log.dart';
+import 'package:rainbow1872/src/data/models/lesson.dart';
+import 'package:rainbow1872/src/data/repositoris/lesson_repository.dart';
 import 'package:rainbow1872/src/domain/use_case/calendar_use_case.dart';
 
 class ReservationViewModel extends GetxController {
+  final _lessonRepository = LessonRepository();
+
   CalendarUseCase calendarUseCase = CalendarUseCase();
 
-  final format = DateFormat("yy년 MM월 dd일");
-  final _controller = TextEditingController();
-  RxString now = "".obs;
+  final _memoController = TextEditingController();
 
-  Map<String, bool> timeTable = {
-    "06:00" : false,
-    "06:15" : false,
-    "06:30" : false,
-    "06:45" : false,
-    "07:00" : false,
-    "07:15" : false,
-  };
+
   @override
-  void onInit() {
-    now.value = format.format(DateTime.now());
-    calendarUseCase.selectDay.stream.listen((event) {
-      now.value = format.format(event);
-    });
+  void onInit() async {
+    await calendarUseCase.onInit();
     super.onInit();
   }
 
+
+
   void showReservationDialog(BuildContext context, int index) {
     Get.defaultDialog(
-      title: "${now} 오전 ${timeTable.keys.toList()[index]}",
+      title: "${calendarUseCase.now} 오전 ${calendarUseCase.timeTable[index].duration.inHours} : ${calendarUseCase.timeTable[index].duration.inMinutes % 60}",
       content: Column(
         children: [
           Container(
@@ -52,7 +46,7 @@ class ReservationViewModel extends GetxController {
                 border: Border.all(color: Colors.grey)
             ),
             child: TextField(
-              controller: _controller,
+              controller: _memoController,
               decoration: InputDecoration(
                   border: InputBorder.none
               ),
@@ -61,8 +55,10 @@ class ReservationViewModel extends GetxController {
         ],
       ),
       confirm: InkWell(
-        onTap: () {
-          confirmDialog();
+        onTap: () async {
+          await confirmDialog(index).then((value) {
+            if(value) Get.back();
+          });
         },
         child: Container(
           width: context.width * 0.3,
@@ -90,19 +86,29 @@ class ReservationViewModel extends GetxController {
   }
 
 
-  void confirmDialog() {
-    Get.defaultDialog(
+  Future<bool> confirmDialog(int index) async {
+    bool result = false;
+    return await Get.defaultDialog(
       title: "에약하기",
-      middleText: "최준호 프로님에게 예약을\n요청 하시겠습니까?",
+      middleText: "${calendarUseCase.manager!.name} 프로님에게 예약을\n요청 하시겠습니까?",
       textConfirm: "요청하기",
       textCancel: "취소",
       onCancel: Get.back,
-      onConfirm: () {
-
+      onConfirm: () async {
+        Log.d("확인");
+        final lesson = Lesson(checkedTime: 0, coachUid: calendarUseCase.manager!.uid, lessonDateTime: calendarUseCase.selectDay.value.millisecondsSinceEpoch, lessonMemo: _memoController.text, lessonNote: "", lessontime: calendarUseCase.timeTable[index].duration.inMilliseconds - const Duration(hours: 5, minutes: 45).inMilliseconds, memberChecked: false, type: "레슨", uid: calendarUseCase.user!.uid);
+        await _lessonRepository.add(lesson, calendarUseCase.manager!.name).then((value) async {
+          _memoController.clear();
+          calendarUseCase.lessons.clear();
+          calendarUseCase.lessons.addAll(await _lessonRepository.getAll(calendarUseCase.user!.uid));
+          calendarUseCase.setTimeTable(calendarUseCase.selectDay.value);
+          result = true;
+          Get.back();
+        });
       },
       confirmTextColor: Colors.grey,
       cancelTextColor: Colors.grey,
       buttonColor: Colors.transparent
-    );
+    ).then((value) => result);
   }
 }

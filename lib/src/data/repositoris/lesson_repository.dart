@@ -13,8 +13,7 @@ class LessonRepository extends FireRepository<Lesson> {
     });
   }
   
-  Future add() async {
-    final sampleLesson = Lesson(checkedTime: 0, coachUid: "3t6GnKo1fjeMMOztrk4gjwAd40G2", lessonDateTime: DateTime.now().millisecondsSinceEpoch, lessonMemo: "", lessonNote: "", lessontime: Duration(minutes: 15).inMilliseconds, memberChecked: false, type: "레슨", uid: "HYDWTRWiUqWynWb9Iu5WkNpDxaH2");
-    await super.db.collection("lesson").doc("최준호_${DateTime.now().millisecondsSinceEpoch}").set(sampleLesson.toJson());
+  Future add(Lesson lesson, String managerName) async {
+    await super.db.collection("lesson").doc("${managerName}_${DateTime.now().millisecondsSinceEpoch}").set(lesson.toJson());
   } 
 }

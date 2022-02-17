@@ -30,6 +30,9 @@ class MonthlyCalendarModule extends StatelessWidget {
       selectedDayPredicate: (day) {
         return isSameDay(useCase.selectDay.value, day);
       },
+      eventLoader: (select) {
+        return useCase.getLessons(select);
+      },
     ));
   }
 }
