@@ -41,6 +41,7 @@ class _$UserTearOff {
       required String name,
       required String phone,
       required int point,
+      required String pro,
       required String proUid,
       String? profileImg,
       required String uid}) {
@@ -63,6 +64,7 @@ class _$UserTearOff {
       name: name,
       phone: phone,
       point: point,
+      pro: pro,
       proUid: proUid,
       profileImg: profileImg,
       uid: uid,
@@ -97,6 +99,7 @@ mixin _$User {
   String get name => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   int get point => throw _privateConstructorUsedError;
+  String get pro => throw _privateConstructorUsedError;
   String get proUid => throw _privateConstructorUsedError;
   String? get profileImg => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
@@ -129,6 +132,7 @@ abstract class $UserCopyWith<$Res> {
       String name,
       String phone,
       int point,
+      String pro,
       String proUid,
       String? profileImg,
       String uid});
@@ -162,6 +166,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? name = freezed,
     Object? phone = freezed,
     Object? point = freezed,
+    Object? pro = freezed,
     Object? proUid = freezed,
     Object? profileImg = freezed,
     Object? uid = freezed,
@@ -239,6 +244,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.point
           : point // ignore: cast_nullable_to_non_nullable
               as int,
+      pro: pro == freezed
+          ? _value.pro
+          : pro // ignore: cast_nullable_to_non_nullable
+              as String,
       proUid: proUid == freezed
           ? _value.proUid
           : proUid // ignore: cast_nullable_to_non_nullable
@@ -279,6 +288,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String name,
       String phone,
       int point,
+      String pro,
       String proUid,
       String? profileImg,
       String uid});
@@ -313,6 +323,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? name = freezed,
     Object? phone = freezed,
     Object? point = freezed,
+    Object? pro = freezed,
     Object? proUid = freezed,
     Object? profileImg = freezed,
     Object? uid = freezed,
@@ -390,6 +401,10 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.point
           : point // ignore: cast_nullable_to_non_nullable
               as int,
+      pro: pro == freezed
+          ? _value.pro
+          : pro // ignore: cast_nullable_to_non_nullable
+              as String,
       proUid: proUid == freezed
           ? _value.proUid
           : proUid // ignore: cast_nullable_to_non_nullable
@@ -428,6 +443,7 @@ class _$_User implements _User {
       required this.name,
       required this.phone,
       required this.point,
+      required this.pro,
       required this.proUid,
       this.profileImg,
       required this.uid});
@@ -471,6 +487,8 @@ class _$_User implements _User {
   @override
   final int point;
   @override
+  final String pro;
+  @override
   final String proUid;
   @override
   final String? profileImg;
@@ -479,7 +497,7 @@ class _$_User implements _User {
 
   @override
   String toString() {
-    return 'User(ableReservation: $ableReservation, available: $available, branch: $branch, birth: $birth, email: $email, gender: $gender, lessonAvailable: $lessonAvailable, lessonCancelCount: $lessonCancelCount, lessonMembership: $lessonMembership, lessonMembershipEnd: $lessonMembershipEnd, lessonMembershipPeriod: $lessonMembershipPeriod, lessonMembershipStart: $lessonMembershipStart, lessonMembershipType: $lessonMembershipType, lessonMembershipUsed: $lessonMembershipUsed, memo: $memo, name: $name, phone: $phone, point: $point, proUid: $proUid, profileImg: $profileImg, uid: $uid)';
+    return 'User(ableReservation: $ableReservation, available: $available, branch: $branch, birth: $birth, email: $email, gender: $gender, lessonAvailable: $lessonAvailable, lessonCancelCount: $lessonCancelCount, lessonMembership: $lessonMembership, lessonMembershipEnd: $lessonMembershipEnd, lessonMembershipPeriod: $lessonMembershipPeriod, lessonMembershipStart: $lessonMembershipStart, lessonMembershipType: $lessonMembershipType, lessonMembershipUsed: $lessonMembershipUsed, memo: $memo, name: $name, phone: $phone, point: $point, pro: $pro, proUid: $proUid, profileImg: $profileImg, uid: $uid)';
   }
 
   @override
@@ -514,6 +532,7 @@ class _$_User implements _User {
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.phone, phone) &&
             const DeepCollectionEquality().equals(other.point, point) &&
+            const DeepCollectionEquality().equals(other.pro, pro) &&
             const DeepCollectionEquality().equals(other.proUid, proUid) &&
             const DeepCollectionEquality()
                 .equals(other.profileImg, profileImg) &&
@@ -541,6 +560,7 @@ class _$_User implements _User {
         const DeepCollectionEquality().hash(name),
         const DeepCollectionEquality().hash(phone),
         const DeepCollectionEquality().hash(point),
+        const DeepCollectionEquality().hash(pro),
         const DeepCollectionEquality().hash(proUid),
         const DeepCollectionEquality().hash(profileImg),
         const DeepCollectionEquality().hash(uid)
@@ -577,6 +597,7 @@ abstract class _User implements User {
       required String name,
       required String phone,
       required int point,
+      required String pro,
       required String proUid,
       String? profileImg,
       required String uid}) = _$_User;
@@ -619,6 +640,8 @@ abstract class _User implements User {
   String get phone;
   @override
   int get point;
+  @override
+  String get pro;
   @override
   String get proUid;
   @override

@@ -26,6 +26,7 @@ class User with _$User {
     required String name,
     required String phone,
     required int point,
+    required String pro,
     required String proUid,
     String? profileImg,
     required String uid,
