@@ -4,6 +4,7 @@ import 'package:rainbow1872/src/presentation/views/account_page/account_page.dar
 import 'package:rainbow1872/src/presentation/views/calendar_page/calendar_page.dart';
 import 'package:rainbow1872/src/presentation/views/home_page/home_page.dart';
 import 'package:rainbow1872/src/presentation/views/lesson_review_page/lesson_review_page.dart';
+import 'package:rainbow1872/src/presentation/views/lesson_review_page/missing_lesson_review_page.dart';
 import 'package:rainbow1872/src/presentation/views/login_page/login_page.dart';
 import 'package:rainbow1872/src/presentation/views/reservation_page/reservation_page.dart';
 import 'package:rainbow1872/src/presentation/views/signup_page/signup_page.dart';
@@ -12,6 +13,7 @@ import 'package:rainbow1872/src/presentation/views/store_state_page/store_state_
 
 class AppRoutes {
   static Route<dynamic>? onGenerateRoutes(RouteSettings settings) {
+
     switch(settings.name) {
       case "/" :
         return _getRoute(SplashPage());
@@ -22,9 +24,9 @@ class AppRoutes {
       case "/ReservationPage" :
         return _getRoute(ReservationPage());
       case "/LessonReviewPage" :
-        return _getRoute(LessonReviewPage(isMissing: true));
-      case "/LessonReviewPageMissing" :
-        return _getRoute(LessonReviewPage(isMissing: false));
+        return _getRoute(LessonReviewPage());
+      case "/MissingReviewLessonPage" :
+        return _getRoute(MissingReviewLessonPage());
       case "/StoreStatePage" :
         return _getRoute(StoreStatePage());
       case "/AccountPage" :

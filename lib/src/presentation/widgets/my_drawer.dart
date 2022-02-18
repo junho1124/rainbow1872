@@ -6,6 +6,7 @@ import 'package:rainbow1872/src/presentation/views/account_page/account_page.dar
 import 'package:rainbow1872/src/presentation/views/calendar_page/calendar_page.dart';
 import 'package:rainbow1872/src/presentation/views/home_page/home_page.dart';
 import 'package:rainbow1872/src/presentation/views/lesson_review_page/lesson_review_page.dart';
+import 'package:rainbow1872/src/presentation/views/lesson_review_page/missing_lesson_review_page.dart';
 import 'package:rainbow1872/src/presentation/views/reservation_page/reservation_page.dart';
 import 'package:rainbow1872/src/presentation/views/signup_page/signup_page.dart';
 import 'package:rainbow1872/src/presentation/views/store_state_page/store_state_page.dart';
@@ -52,7 +53,7 @@ class MyDrawer extends StatelessWidget {
                   buildDrawerTile("홈", () => Get.offNamed(HomePage.PATH)),
                   buildDrawerTile("캘린더", () => Get.offNamed(CalendarPage.PATH)),
                   buildDrawerTile("레슨 리뷰", () => Get.offNamed(LessonReviewPage.PATH)),
-                  buildDrawerTile("미확인 레슨 리뷰", () => Get.offNamed(LessonReviewPage.MissingPATH)),
+                  buildDrawerTile("미확인 레슨 리뷰", () => Get.offNamed(MissingReviewLessonPage.PATH)),
                   buildDrawerTile("레슨 예약하기", () => Get.offNamed(ReservationPage.PATH)),
                   buildDrawerTile("스윙 모션", () => openImpactVision()),
                   buildDrawerTile("매장 현황", () => Get.offNamed(StoreStatePage.PATH)),
