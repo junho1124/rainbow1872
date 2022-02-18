@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
                     BannerModule(banners: viewModel.banners),
                     UserInfoModule(user: viewModel.user, manager: viewModel.manager),
                     MissingLessonModule(missingLessons: viewModel.missingLessons),
-                    WeeklyCalendarModule(useCase: viewModel.calendarUseCase, matchLessons: viewModel.matchLessons,),
+                    WeeklyCalendarModule(useCase: viewModel.calendarUseCase, matchLessons: viewModel.calendarUseCase.dayLessons,),
                     SizedBox(height: 20),
                     HomeIconsModule(assets: viewModel.assets, titles: viewModel.titles,)
                   ],

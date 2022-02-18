@@ -40,6 +40,7 @@ class HomeViewModel extends GetxController {
     banners = await _bannerRepository.getAll();
     manager = await _managerRepository.get(user.proUid);
     lessons = await _lessonRepository.getAll(user.uid);
+    calendarUseCase.onInit();
     missingLessons.addAll(lessons.where((element) => !element.memberChecked));
     matchLessons.addAll(lessons.where((element) => DateTime.fromMillisecondsSinceEpoch(element.lessonDateTime).day == DateTime.now().day));
     calendarUseCase.selectDay.stream.listen((event) {
