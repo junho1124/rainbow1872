@@ -32,9 +32,10 @@ class CalendarUseCase extends GetxController {
   ReserveOption? _option;
 
   RxString now = "".obs;
-  RxBool dayOver = false.obs;
+  RxBool unReservable = false.obs;
 
   List<Lesson> lessons = [];
+  RxList<Lesson> dayLessons = <Lesson>[].obs;
   List<ManagerSchedule> managerSchedules = [];
 
   final format = DateFormat("yy년 MM월 dd일");
@@ -47,12 +48,23 @@ class CalendarUseCase extends GetxController {
     manager = _managerBox.read(Manager.boxName);
     _option = await _reserveOptionRepository.get(user!.ableReservation);
     lessons.addAll(await _lessonRepository.getAll(user!.uid));
+    dayLessons.addAll(lessons.where((element) => DateTime.fromMillisecondsSinceEpoch(element.lessonDateTime).day == selectDay.value.day));
     managerSchedules.addAll(await _managerScheduleRepository.get(manager!.uid));
     now.value = format.format(DateTime.now());
     setTimeTable(DateTime.now());
     selectDay.stream.listen((event) {
       now.value = format.format(event);
       setTimeTable(event);
+      dayLessons.clear();
+      dayLessons.addAll(lessons.where((element) => DateTime.fromMillisecondsSinceEpoch(element.lessonDateTime).day == selectDay.value.day));
+    });
+    _lessonRepository.getStream(user!.uid).listen((event) {
+      event.docChanges.forEach((element) {
+        final update = Lesson.fromJson(element.doc.data()!);
+        lessons.removeWhere((element) => element.lessonDateTime == update.lessonDateTime);
+        lessons.add(update);
+        setTimeTable(selectDay.value);
+      });
     });
     super.onInit();
   }
@@ -67,16 +79,16 @@ class CalendarUseCase extends GetxController {
     timeTable.clear();
     if(event.month == DateTime.now().month) {
       if (event.day <= DateTime.now().day) {
-        dayOver.value = true;
+        unReservable.value = true;
         return;
       } else {
         if (_option!.today && event.day == DateTime.now().day) {
-          dayOver.value = true;
+          unReservable.value = true;
           return;
         }
       }
     }
-    dayOver.value = false;
+    unReservable.value = false;
     Duration duration = const Duration(hours: 6, minutes: 0);
     do {
       bool isAvailable = false;
@@ -89,12 +101,15 @@ class CalendarUseCase extends GetxController {
       timeTable.add(LessonEvent(duration: duration, lessonTime: event.add(duration), isReserved: isReserved, isAvailable: isAvailable));
       duration = duration + const Duration(minutes: 15);
     } while(duration.inHours < 24);
-    scrollController.jumpTo(0);
+    unReservable.value = timeTable.where((event) => event.isReserved).isNotEmpty;
+    if(scrollController.positions.isNotEmpty) {
+      scrollController.jumpTo(0);
+    }
   }
 
   bool checkIsReserved(DateTime event, Duration duration, bool isReserved) {
-    for (var item in lessons.where((element) => DateTime.fromMillisecondsSinceEpoch(element.lessonDateTime).day == event.day)) {
-      if(item.lessontime == duration.inMilliseconds - const Duration(hours: 5, minutes: 45).inMilliseconds) {
+    for (var item in lessons.where((element) => DateTime.fromMillisecondsSinceEpoch(element.lessonDateTime).day == event.day).toList()) {
+      if(Duration(milliseconds: item.lessontime).inMinutes  == Duration(milliseconds: duration.inMilliseconds).inMinutes - const Duration(hours: 5, minutes: 45).inMinutes) {
         isReserved = true;
       }
     }

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rainbow1872/main.dart';
 import 'package:rainbow1872/src/presentation/view_model/calendar_view_model.dart';
+import 'package:rainbow1872/src/presentation/widgets/lesson_list_module.dart';
 import 'package:rainbow1872/src/presentation/widgets/monthly_calrendar.dart';
 import 'package:rainbow1872/src/presentation/widgets/my_drawer.dart';
-import 'package:rainbow1872/src/presentation/widgets/tiles/lesson_state_card.dart';
 import 'package:rainbow1872/src/presentation/widgets/tiles/lesson_tile.dart';
 
 class CalendarPage extends StatelessWidget {
@@ -19,7 +19,7 @@ class CalendarPage extends StatelessWidget {
           return Scaffold(
             drawer: MyDrawer(),
             appBar: defaultAppBar(title: "일정 확인하기"),
-            body: Column(
+            body: viewModel.isLoaded.isTrue ? Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Flexible(
@@ -33,14 +33,14 @@ class CalendarPage extends StatelessWidget {
                       children: [
                         const Divider(color: Colors.black),
                         Obx(() => Text(viewModel.now.value)),
-                        buildLessonTile(),
-                        buildNoLessonCard()
+                        buildLessonTile(user: viewModel.user!, manager: viewModel.manager!),
+                        LessonListModule(matchLessons: viewModel.calendarUseCase.dayLessons),
                       ],
                     ),
                   ),
                 )
               ],
-            ),
+            ) : Container(),
           );
         });
   }
