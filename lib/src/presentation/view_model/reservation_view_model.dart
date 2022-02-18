@@ -96,7 +96,18 @@ class ReservationViewModel extends GetxController {
       onCancel: Get.back,
       onConfirm: () async {
         Log.d("확인");
-        final lesson = Lesson(checkedTime: 0, coachUid: calendarUseCase.manager!.uid, lessonDateTime: calendarUseCase.selectDay.value.millisecondsSinceEpoch, lessonMemo: _memoController.text, lessonNote: "", lessontime: calendarUseCase.timeTable[index].duration.inMilliseconds - const Duration(hours: 5, minutes: 45).inMilliseconds, memberChecked: false, type: "레슨", uid: calendarUseCase.user!.uid);
+        final selectDay = calendarUseCase.selectDay.value;
+        final lesson = Lesson(
+            checkedTime: 0,
+            coachUid: calendarUseCase.manager!.uid,
+            lessonDateTime: DateTime(selectDay.year, selectDay.month, selectDay.day, calendarUseCase.timeTable[index].duration.inMinutes ~/ 60, calendarUseCase.timeTable[index].duration.inMinutes % 60).millisecondsSinceEpoch,
+            lessonMemo: _memoController.text,
+            lessonNote: "",
+            lessontime: calendarUseCase.timeTable[index].duration.inMilliseconds - const Duration(hours: 5, minutes: 45).inMilliseconds,
+            memberChecked: false,
+            type: "레슨",
+            uid: calendarUseCase.user!.uid,
+        );
         await _lessonRepository.add(lesson, calendarUseCase.manager!.name).then((value) async {
           _memoController.clear();
           calendarUseCase.lessons.clear();

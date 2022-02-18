@@ -25,11 +25,11 @@ class ReservationPage extends StatelessWidget {
                 Divider(
                   color: Colors.black,
                 ),
-                Text("최준호 프로님 / ${viewModel.calendarUseCase.now}",
+                Obx(() => Text("최준호 프로님 / ${viewModel.calendarUseCase.now}",
                     style:
-                        TextStyle(fontSize: 22, fontWeight: FontWeight.w500)),
+                    TextStyle(fontSize: 22, fontWeight: FontWeight.w500))),
                 Obx(() => Expanded(
-                      child: viewModel.calendarUseCase.dayOver.isFalse
+                      child: viewModel.calendarUseCase.unReservable.isFalse
                           ? ListView.builder(
                               shrinkWrap: true,
                               controller: viewModel.calendarUseCase.scrollController,
