@@ -3,7 +3,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:rainbow1872/src/data/models/lesson.dart';
 import 'package:rainbow1872/src/domain/use_case/calendar_use_case.dart';
-import 'package:rainbow1872/src/presentation/widgets/tiles/lesson_state_card.dart';
+import 'package:rainbow1872/src/presentation/widgets/lesson_list_module.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class WeeklyCalendarModule extends StatelessWidget {
@@ -39,21 +39,14 @@ class WeeklyCalendarModule extends StatelessWidget {
                 selectedDayPredicate: (day) {
                   return isSameDay(useCase.selectDay.value, day);
                 },
+                eventLoader: (select) {
+                      return useCase.getLessons(select);
+            },
               )),
         ),
-        Obx(() => matchLessons.isEmpty
-            ? buildNoLessonCard()
-            : SizedBox(
-          height: context.height * 0.15,
-              width: context.width,
-              child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: matchLessons.length,
-                  itemBuilder: (context, index) =>
-                      buildLessonCard(matchLessons[index]),
-                ),
-            )),
+        LessonListModule(matchLessons: matchLessons),
       ],
     );
   }
 }
+
