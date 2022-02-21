@@ -13,7 +13,7 @@ class MonthlyCalendarModule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => TableCalendar(
+    return Obx(() => useCase.isInit.value ? TableCalendar(
       firstDay: DateTime.utc(2010),
       lastDay: DateTime.utc(2050),
       focusedDay: useCase.focusDay.value,
@@ -33,6 +33,6 @@ class MonthlyCalendarModule extends StatelessWidget {
       eventLoader: (select) {
         return useCase.getLessons(select);
       },
-    ));
+    ) : Container());
   }
 }

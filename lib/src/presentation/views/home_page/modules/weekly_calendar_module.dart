@@ -23,30 +23,31 @@ class WeeklyCalendarModule extends StatelessWidget {
         SizedBox(
           width: context.width,
           height: 150,
-          child: Obx(() => TableCalendar(
-                firstDay: DateTime.utc(2010),
-                lastDay: DateTime.utc(2050),
-                focusedDay: useCase.focusDay.value,
-                locale: "ko_KR",
-                calendarFormat: CalendarFormat.week,
-                availableCalendarFormats: {CalendarFormat.week: "week"},
-                headerStyle: HeaderStyle(titleCentered: true),
-                onDaySelected: (select, focusDay) {
-                  if (!isSameDay(useCase.selectDay.value, select)) {
-                    useCase.onFocusDay(focusDay, select);
-                  }
-                },
-                selectedDayPredicate: (day) {
-                  return isSameDay(useCase.selectDay.value, day);
-                },
-                eventLoader: (select) {
-                      return useCase.getLessons(select);
-            },
-              )),
+          child: Obx(() => useCase.isInit.value
+              ? TableCalendar(
+                  firstDay: DateTime.utc(2010),
+                  lastDay: DateTime.utc(2050),
+                  focusedDay: useCase.focusDay.value,
+                  locale: "ko_KR",
+                  calendarFormat: CalendarFormat.week,
+                  availableCalendarFormats: {CalendarFormat.week: "week"},
+                  headerStyle: HeaderStyle(titleCentered: true),
+                  onDaySelected: (select, focusDay) {
+                    if (!isSameDay(useCase.selectDay.value, select)) {
+                      useCase.onFocusDay(focusDay, select);
+                    }
+                  },
+                  selectedDayPredicate: (day) {
+                    return isSameDay(useCase.selectDay.value, day);
+                  },
+                  eventLoader: (select) {
+                    return useCase.getLessons(select);
+                  },
+                )
+              : Container()),
         ),
         LessonListModule(matchLessons: matchLessons),
       ],
     );
   }
 }
-

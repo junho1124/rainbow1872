@@ -33,6 +33,7 @@ class CalendarUseCase extends GetxController {
 
   RxString now = "".obs;
   RxBool unReservable = false.obs;
+  RxBool isInit = false.obs;
 
   List<Lesson> lessons = [];
   RxList<Lesson> dayLessons = <Lesson>[].obs;
@@ -66,6 +67,7 @@ class CalendarUseCase extends GetxController {
         setTimeTable(selectDay.value);
       });
     });
+    isInit.value = true;
     super.onInit();
   }
 
@@ -165,7 +167,7 @@ class CalendarUseCase extends GetxController {
     return isAvailable;
   }
 
-  List<Lesson> getLessons(DateTime select) {
-    return lessons.where((element) => DateTime.fromMillisecondsSinceEpoch(element.lessonDateTime).day == select.day).toList();
+  RxList<Lesson> getLessons(DateTime select) {
+    return lessons.where((element) => DateTime.fromMillisecondsSinceEpoch(element.lessonDateTime).day == select.day).toList().obs;
   }
 }
