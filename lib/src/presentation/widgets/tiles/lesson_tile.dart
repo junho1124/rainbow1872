@@ -37,9 +37,9 @@ Widget buildLessonTile({required User user, required Manager manager}) {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("• 담당 프로 : ${manager.name}"),
-                Text("• 남은 이용 기간 : ${format.format(DateTime.fromMillisecondsSinceEpoch(user.lessonMembershipStart))} ~ ${format.format(DateTime.fromMillisecondsSinceEpoch(user.lessonMembershipEnd))}"),
-                Text("• 남은 레슨 횟수 : ${user.lessonMembership - user.lessonMembershipUsed}"),
+                Text("• 담당 프로: ${manager.name}"),
+                Text("• 남은 이용 기간: ${format.format(DateTime.fromMillisecondsSinceEpoch(user.lessonMembershipStart))} ~ ${format.format(DateTime.fromMillisecondsSinceEpoch(user.lessonMembershipEnd))}"),
+                Text("• 남은 레슨 횟수: ${user.lessonMembership - user.lessonMembershipUsed}"),
               ],
             ),
           ),
