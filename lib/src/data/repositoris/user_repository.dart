@@ -9,25 +9,31 @@ class UserRepository extends FireRepository<User> {
   @override
   Future<User?> get(String key) async {
     return await super.db.collection("user").where("phone", isEqualTo: key).get().then((value) {
-      if(value.docs.first.exists) {
-        return User.fromJson(value.docs.first.data());
-      } else {
-        return null;
-      }
+        final user = User.fromJson(value.docs.first.data());
+        _userBox.write(User.boxName, user);
+        _userBox.save();
+        return user;
     });
   }
 
   @override
-  Future update(User item) async {
-    await super.db.collection("user").where("phone", isEqualTo: item.phone).get().then((value) async {
+  Future<User?> update(User item) async {
+    return await super.db.collection("user").where("phone", isEqualTo: item.phone).get().then((value) async {
       await super.db.collection("user").doc(value.docs.first.id).update(item.toJson());
+      final user = User.fromJson(value.docs.first.data());
+      _userBox.write(User.boxName, user);
+      _userBox.save();
+      return user;
     });
   }
 
   Future<User?> getFromEmail(String key) async {
     return await super.db.collection("user").where("email", isEqualTo: key).get().then((value) {
       if(value.docs.first.exists) {
-        return User.fromJson(value.docs.first.data());
+        final user = User.fromJson(value.docs.first.data());
+        _userBox.write(User.boxName, user);
+        _userBox.save();
+        return user;
       } else {
         return null;
       }
