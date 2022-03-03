@@ -25,6 +25,7 @@ class MyDrawer extends StatelessWidget {
     final name = user.name;
     return SafeArea(
       top: true,
+      bottom: false,
       child: Drawer(
         child: Container(
           decoration: const BoxDecoration(

@@ -14,7 +14,7 @@ class LessonListModule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() => matchLessons.isEmpty
-        ? buildNoLessonCard()
+        ? buildNoLessonCard(context)
         : SizedBox(
       height: context.height * 0.15,
       width: context.width,

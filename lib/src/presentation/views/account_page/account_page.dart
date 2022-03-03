@@ -50,14 +50,15 @@ class AccountPage extends StatelessWidget {
               Divider(color: Colors.black),
               Container(
                 width: double.infinity,
-                height: 150,
+                height: 170,
                 margin: EdgeInsets.symmetric(horizontal: 8),
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 25),
+                padding: EdgeInsets.symmetric(horizontal: 40),
                 decoration: BoxDecoration(
                   image: DecorationImage(image: AssetImage("assets/banner_ticket.png"), fit: BoxFit.fitWidth),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("ASDDGF", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),),
                     Text("시간: 15분 / 30회 레슨권 / 3개월", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),

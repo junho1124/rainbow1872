@@ -41,13 +41,17 @@ class UserInfoModule extends StatelessWidget {
                     SizedBox(
                       width: 8,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(user.name),
-                        Text("남은 레슨 횟수: ${user.lessonMembership - user.lessonMembershipUsed}"),
-                        Text("남은 레슨 기간: ${format.format(DateTime.fromMillisecondsSinceEpoch(user.lessonMembershipStart))} ~ ${format.format(DateTime.fromMillisecondsSinceEpoch(user.lessonMembershipEnd))}"),
-                      ],
+                    SizedBox(
+                      width: context.width - 100,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(user.name),
+                          Text("남은 레슨 횟수: ${user.lessonMembership - user.lessonMembershipUsed}"),
+                          Text("남은 레슨 기간: ${format.format(DateTime.fromMillisecondsSinceEpoch(user.lessonMembershipStart))} ~ "),
+                          Align(alignment: Alignment.centerRight,child: Text(format.format(DateTime.fromMillisecondsSinceEpoch(user.lessonMembershipEnd)))),
+                        ],
+                      ),
                     )
                   ],
                 ),

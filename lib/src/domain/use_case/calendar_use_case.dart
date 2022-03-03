@@ -96,9 +96,9 @@ class CalendarUseCase extends GetxController {
       bool isAvailable = false;
       bool isReserved = false;
       //예약이 가능한 시간인지 체크
-      isAvailable = checkIsAvailable(event, duration, isAvailable);
+      isAvailable = _checkIsAvailable(event, duration, isAvailable);
 
-      isReserved = checkIsReserved(event, duration, isReserved);
+      isReserved = _checkIsReserved(event, duration, isReserved);
 
       timeTable.add(LessonEvent(duration: duration, lessonTime: event.add(duration), isReserved: isReserved, isAvailable: isAvailable));
       duration = duration + const Duration(minutes: 15);
@@ -109,7 +109,7 @@ class CalendarUseCase extends GetxController {
     }
   }
 
-  bool checkIsReserved(DateTime event, Duration duration, bool isReserved) {
+  bool _checkIsReserved(DateTime event, Duration duration, bool isReserved) {
     for (var item in lessons.where((element) => DateTime.fromMillisecondsSinceEpoch(element.lessonDateTime).day == event.day).toList()) {
       if(Duration(milliseconds: item.lessontime).inMinutes  == Duration(milliseconds: duration.inMilliseconds).inMinutes - const Duration(hours: 5, minutes: 45).inMinutes) {
         isReserved = true;
@@ -118,7 +118,7 @@ class CalendarUseCase extends GetxController {
     return isReserved;
   }
 
-  bool checkIsAvailable(DateTime event, Duration duration, bool isAvailable) {
+  bool _checkIsAvailable(DateTime event, Duration duration, bool isAvailable) {
     //해당 요일의 스케쥴
     ManagerSchedule schedule = managerSchedules[event.weekday - 1];
     //옵션 상 예약 가능 한지 확인
@@ -167,7 +167,7 @@ class CalendarUseCase extends GetxController {
     return isAvailable;
   }
 
-  RxList<Lesson> getLessons(DateTime select) {
+  List<Lesson> getLessons(DateTime select) {
     return lessons.where((element) => DateTime.fromMillisecondsSinceEpoch(element.lessonDateTime).day == select.day).toList().obs;
   }
 }
