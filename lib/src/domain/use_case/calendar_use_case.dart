@@ -110,7 +110,10 @@ class CalendarUseCase extends GetxController {
   }
 
   bool _checkIsReserved(DateTime event, Duration duration, bool isReserved) {
-    for (var item in lessons.where((element) => DateTime.fromMillisecondsSinceEpoch(element.lessonDateTime).day == event.day).toList()) {
+    for (var item in lessons.where((element) {
+      final lessonTime = DateTime.fromMillisecondsSinceEpoch(element.lessonDateTime);
+      return DateTime(lessonTime.year, lessonTime.month, lessonTime.day) == DateTime(event.year, event.month, event.day);
+    }).toList()) {
       if(Duration(milliseconds: item.lessontime).inMinutes  == Duration(milliseconds: duration.inMilliseconds).inMinutes - const Duration(hours: 5, minutes: 45).inMinutes) {
         isReserved = true;
       }
@@ -168,6 +171,11 @@ class CalendarUseCase extends GetxController {
   }
 
   List<Lesson> getLessons(DateTime select) {
-    return lessons.where((element) => DateTime.fromMillisecondsSinceEpoch(element.lessonDateTime).day == select.day).toList().obs;
+    return lessons.where((element) {
+      final lessonTime = DateTime
+          .fromMillisecondsSinceEpoch(element.lessonDateTime);
+      return
+          DateTime(lessonTime.year, lessonTime.month, lessonTime.day) == DateTime(select.year, select.month, select.day);
+    }).toList().obs;
   }
 }
