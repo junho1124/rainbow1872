@@ -52,4 +52,20 @@ class UserRepository extends FireRepository<User> {
       }
     });
   }
+
+  Future membershipCountChange(String uid) async {
+    await db.collection("user").where("uid", isEqualTo: uid).get().then((value) {
+      final user = User.fromJson(value.docs.first.data());
+      final updateUser = user.copyWith(lessonMembershipUsed: user.lessonMembershipUsed + 1);
+      db.doc(value.docs.first.id).set(updateUser.toJson());
+    });
+  }
+
+  Future cancelCountChange(String uid) async {
+    await db.collection("user").where("uid", isEqualTo: uid).get().then((value) {
+      final user = User.fromJson(value.docs.first.data());
+      final updateUser = user.copyWith(lessonCancelCount: user.lessonCancelCount + 1);
+      db.doc(value.docs.first.id).set(updateUser.toJson());
+    });
+  }
 }

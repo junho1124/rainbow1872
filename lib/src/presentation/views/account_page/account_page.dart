@@ -46,7 +46,7 @@ class AccountPage extends StatelessWidget {
               ),
               Text("${viewModel.user.name} 회원님", style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),),
               Divider(color: Colors.black),
-              UserInfoModule(user: viewModel.user, manager: viewModel.manager),
+              UserInfoModule(user: viewModel.user, manager: viewModel.manager, branch: viewModel.branch,),
               Divider(color: Colors.black),
               Container(
                 width: double.infinity,

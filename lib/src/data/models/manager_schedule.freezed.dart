@@ -26,12 +26,16 @@ class _$ManagerScheduleTearOff {
       {required String dayOfWeek,
       required String kor,
       required String working,
+      required int? restStart,
+      required int? restFinish,
       required int workingFinish,
       required int workingStart}) {
     return _ManagerSchedule(
       dayOfWeek: dayOfWeek,
       kor: kor,
       working: working,
+      restStart: restStart,
+      restFinish: restFinish,
       workingFinish: workingFinish,
       workingStart: workingStart,
     );
@@ -50,6 +54,8 @@ mixin _$ManagerSchedule {
   String get dayOfWeek => throw _privateConstructorUsedError;
   String get kor => throw _privateConstructorUsedError;
   String get working => throw _privateConstructorUsedError;
+  int? get restStart => throw _privateConstructorUsedError;
+  int? get restFinish => throw _privateConstructorUsedError;
   int get workingFinish => throw _privateConstructorUsedError;
   int get workingStart => throw _privateConstructorUsedError;
 
@@ -68,6 +74,8 @@ abstract class $ManagerScheduleCopyWith<$Res> {
       {String dayOfWeek,
       String kor,
       String working,
+      int? restStart,
+      int? restFinish,
       int workingFinish,
       int workingStart});
 }
@@ -86,6 +94,8 @@ class _$ManagerScheduleCopyWithImpl<$Res>
     Object? dayOfWeek = freezed,
     Object? kor = freezed,
     Object? working = freezed,
+    Object? restStart = freezed,
+    Object? restFinish = freezed,
     Object? workingFinish = freezed,
     Object? workingStart = freezed,
   }) {
@@ -102,6 +112,14 @@ class _$ManagerScheduleCopyWithImpl<$Res>
           ? _value.working
           : working // ignore: cast_nullable_to_non_nullable
               as String,
+      restStart: restStart == freezed
+          ? _value.restStart
+          : restStart // ignore: cast_nullable_to_non_nullable
+              as int?,
+      restFinish: restFinish == freezed
+          ? _value.restFinish
+          : restFinish // ignore: cast_nullable_to_non_nullable
+              as int?,
       workingFinish: workingFinish == freezed
           ? _value.workingFinish
           : workingFinish // ignore: cast_nullable_to_non_nullable
@@ -125,6 +143,8 @@ abstract class _$ManagerScheduleCopyWith<$Res>
       {String dayOfWeek,
       String kor,
       String working,
+      int? restStart,
+      int? restFinish,
       int workingFinish,
       int workingStart});
 }
@@ -145,6 +165,8 @@ class __$ManagerScheduleCopyWithImpl<$Res>
     Object? dayOfWeek = freezed,
     Object? kor = freezed,
     Object? working = freezed,
+    Object? restStart = freezed,
+    Object? restFinish = freezed,
     Object? workingFinish = freezed,
     Object? workingStart = freezed,
   }) {
@@ -161,6 +183,14 @@ class __$ManagerScheduleCopyWithImpl<$Res>
           ? _value.working
           : working // ignore: cast_nullable_to_non_nullable
               as String,
+      restStart: restStart == freezed
+          ? _value.restStart
+          : restStart // ignore: cast_nullable_to_non_nullable
+              as int?,
+      restFinish: restFinish == freezed
+          ? _value.restFinish
+          : restFinish // ignore: cast_nullable_to_non_nullable
+              as int?,
       workingFinish: workingFinish == freezed
           ? _value.workingFinish
           : workingFinish // ignore: cast_nullable_to_non_nullable
@@ -180,6 +210,8 @@ class _$_ManagerSchedule implements _ManagerSchedule {
       {required this.dayOfWeek,
       required this.kor,
       required this.working,
+      required this.restStart,
+      required this.restFinish,
       required this.workingFinish,
       required this.workingStart});
 
@@ -193,13 +225,17 @@ class _$_ManagerSchedule implements _ManagerSchedule {
   @override
   final String working;
   @override
+  final int? restStart;
+  @override
+  final int? restFinish;
+  @override
   final int workingFinish;
   @override
   final int workingStart;
 
   @override
   String toString() {
-    return 'ManagerSchedule(dayOfWeek: $dayOfWeek, kor: $kor, working: $working, workingFinish: $workingFinish, workingStart: $workingStart)';
+    return 'ManagerSchedule(dayOfWeek: $dayOfWeek, kor: $kor, working: $working, restStart: $restStart, restFinish: $restFinish, workingFinish: $workingFinish, workingStart: $workingStart)';
   }
 
   @override
@@ -210,6 +246,9 @@ class _$_ManagerSchedule implements _ManagerSchedule {
             const DeepCollectionEquality().equals(other.dayOfWeek, dayOfWeek) &&
             const DeepCollectionEquality().equals(other.kor, kor) &&
             const DeepCollectionEquality().equals(other.working, working) &&
+            const DeepCollectionEquality().equals(other.restStart, restStart) &&
+            const DeepCollectionEquality()
+                .equals(other.restFinish, restFinish) &&
             const DeepCollectionEquality()
                 .equals(other.workingFinish, workingFinish) &&
             const DeepCollectionEquality()
@@ -222,6 +261,8 @@ class _$_ManagerSchedule implements _ManagerSchedule {
       const DeepCollectionEquality().hash(dayOfWeek),
       const DeepCollectionEquality().hash(kor),
       const DeepCollectionEquality().hash(working),
+      const DeepCollectionEquality().hash(restStart),
+      const DeepCollectionEquality().hash(restFinish),
       const DeepCollectionEquality().hash(workingFinish),
       const DeepCollectionEquality().hash(workingStart));
 
@@ -241,6 +282,8 @@ abstract class _ManagerSchedule implements ManagerSchedule {
       {required String dayOfWeek,
       required String kor,
       required String working,
+      required int? restStart,
+      required int? restFinish,
       required int workingFinish,
       required int workingStart}) = _$_ManagerSchedule;
 
@@ -253,6 +296,10 @@ abstract class _ManagerSchedule implements ManagerSchedule {
   String get kor;
   @override
   String get working;
+  @override
+  int? get restStart;
+  @override
+  int? get restFinish;
   @override
   int get workingFinish;
   @override

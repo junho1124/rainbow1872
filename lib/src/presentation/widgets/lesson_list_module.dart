@@ -14,10 +14,10 @@ class LessonListModule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() => matchLessons.isEmpty
-        ? buildNoLessonCard(context)
+        ? Image.asset("assets/banner_no_lesson.png", width: context.width * 0.4,)
         : SizedBox(
-      height: context.height * 0.15,
-      width: context.width,
+      height: 50,
+      width: context.width - 50,
       child: ListView.builder(
         shrinkWrap: true,
         itemCount: matchLessons.length,

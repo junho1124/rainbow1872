@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
 
 AppBar defaultAppBar({required String title}) {
   return AppBar(
-    title: Text(title),
+    title: Text(title, style: TextStyle(fontSize: 14),),
     centerTitle: false,
   );
 }

@@ -9,6 +9,8 @@ class ManagerSchedule with _$ManagerSchedule {
     required String dayOfWeek,
     required String kor,
     required String working,
+    required int? restStart,
+    required int? restFinish,
     required int workingFinish,
     required int workingStart,
   }) = _ManagerSchedule;

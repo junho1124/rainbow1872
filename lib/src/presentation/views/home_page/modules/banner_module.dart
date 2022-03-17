@@ -15,11 +15,17 @@ class BannerModule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
-        items: List.generate(
-            banners.length, (index) => buildBanner(context, index)),
-        options: CarouselOptions(
-            autoPlay: true, viewportFraction: 1, aspectRatio: 2 / 1));
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.black26,
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10))
+      ),
+      child: CarouselSlider(
+          items: List.generate(
+              banners.length, (index) => buildBanner(context, index)),
+          options: CarouselOptions(
+              autoPlay: true, viewportFraction: 1, aspectRatio: 3.9 / 1)),
+    );
   }
 
   Widget buildBanner(BuildContext context, int index) {
@@ -41,10 +47,14 @@ class BannerModule extends StatelessWidget {
           );
         }
       },
-      child: SizedBox(
+      child: Container(
         width: context.width,
+        decoration: BoxDecoration(
+          image: DecorationImage(image: NetworkImage(banners[index].imageUrl)),
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10))
+        ),
         height: 150,
-        child: Image.network(banners[index].imageUrl),
+        // child: Image.network(banners[index].imageUrl),
       ),
     );
   }

@@ -4,9 +4,9 @@ class AppTheme {
   static ThemeData get light {
     return ThemeData(
       appBarTheme: const AppBarTheme(
-          color: Color(0xD0F8F8F8),
-          iconTheme: IconThemeData(color: Colors.black),
-          foregroundColor: Colors.black,
+          color: mainAppColor,
+          iconTheme: IconThemeData(color: Colors.white),
+          foregroundColor: Colors.white,
           elevation: 0.5
       ),
       splashColor: Colors.transparent,
@@ -15,4 +15,9 @@ class AppTheme {
       ),
     );
   }
+
+  static const Color mainAppColor = Color(0xFF46767A);
+  static const Color mainTextColor = Color(0xFF46597A);
+  static const Color stateGreen = Color(0xFFAADA6A);
+
 }

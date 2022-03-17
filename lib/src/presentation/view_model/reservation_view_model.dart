@@ -23,6 +23,8 @@ class ReservationViewModel extends GetxController {
 
 
   void showReservationDialog(BuildContext context, int index) {
+    Rx<Duration> duration = Duration(minutes: 15).obs;
+    final offset = Duration(minutes: 15);
     Get.defaultDialog(
       title: "${calendarUseCase.now} 오전 ${calendarUseCase.timeTable[index].duration.inHours} : ${calendarUseCase.timeTable[index].duration.inMinutes % 60}",
       content: Column(
@@ -34,7 +36,28 @@ class ReservationViewModel extends GetxController {
                 boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0.5, 0.5), blurRadius: 0.5)],
                 color: Colors.white
             ),
-            child: Center(child: Text("15분", style: TextStyle(fontWeight: FontWeight.w500))),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    if(duration.value.inMinutes > 15) {
+                      duration.value -= offset;
+                    }
+                  },
+                  icon: Icon(Icons.arrow_back_ios),
+                ),
+                Obx((() => Text("${duration.value.inMinutes}분", style: TextStyle(fontWeight: FontWeight.w500)))),
+                IconButton(
+                  onPressed: () {
+                    if(duration.value.inMinutes < 60) {
+                      duration.value += offset;
+                    }
+                  },
+                  icon: Icon(Icons.arrow_forward_ios),
+                ),
+              ],
+            ),
           ),
           SizedBox(height: 8),
           Text("메모 사항"),
@@ -56,7 +79,7 @@ class ReservationViewModel extends GetxController {
       ),
       confirm: InkWell(
         onTap: () async {
-          await confirmDialog(index).then((value) {
+          await confirmDialog(index, duration.value).then((value) {
             if(value) Get.back();
           });
         },
@@ -86,7 +109,7 @@ class ReservationViewModel extends GetxController {
   }
 
 
-  Future<bool> confirmDialog(int index) async {
+  Future<bool> confirmDialog(int index, Duration lessonTime) async {
     bool result = false;
     return await Get.defaultDialog(
       title: "에약하기",
@@ -103,7 +126,7 @@ class ReservationViewModel extends GetxController {
             lessonDateTime: DateTime(selectDay.year, selectDay.month, selectDay.day, calendarUseCase.timeTable[index].duration.inMinutes ~/ 60, calendarUseCase.timeTable[index].duration.inMinutes % 60).millisecondsSinceEpoch,
             lessonMemo: _memoController.text,
             lessonNote: "",
-            lessontime: calendarUseCase.timeTable[index].duration.inMilliseconds - const Duration(hours: 5, minutes: 45).inMilliseconds,
+            lessontime: lessonTime.inMilliseconds,
             memberChecked: false,
             type: "레슨",
             uid: calendarUseCase.user!.uid,

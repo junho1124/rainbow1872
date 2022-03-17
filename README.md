@@ -14,10 +14,3 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-///휴대전화번호 기준으로 생성 여부 결정
-///
-/// 메니져 스케쥴 일 시작, 휴식  millsec으로 지정
-///
-/// 유져는 uid 필드 값으로 검색 , 매니져는 documentId 가 매니져객체
-///
-/// lesson, branch, banner,

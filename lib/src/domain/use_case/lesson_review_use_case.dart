@@ -5,12 +5,14 @@ import 'package:rainbow1872/src/data/models/lesson.dart';
 import 'package:rainbow1872/src/data/models/manager.dart';
 import 'package:rainbow1872/src/data/models/user.dart';
 import 'package:rainbow1872/src/data/repositoris/lesson_repository.dart';
+import 'package:rainbow1872/src/data/repositoris/user_repository.dart';
 
 class LessonReviewUseCase extends GetxController {
   LessonReviewUseCase({required this.isMissing});
   final RxBool isMissing;
 
   final _lessonRepository = LessonRepository();
+  final _userRepository = UserRepository();
 
   final _userBox = GetStorage(User.boxName);
   final _managerBox = GetStorage(Manager.boxName);
@@ -40,6 +42,7 @@ class LessonReviewUseCase extends GetxController {
 
   Future checkLesson(Lesson lesson) async {
     await _lessonRepository.update(lesson).then((value) async {
+      _userRepository.membershipCountChange(user!.uid);
       lessons.clear();
       if(isMissing.isFalse) {
         lessons.addAll((await _lessonRepository.getAll(user!.uid)));

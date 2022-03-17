@@ -37,7 +37,7 @@ class CalendarUseCase extends GetxController {
 
   List<Lesson> lessons = [];
   RxList<Lesson> dayLessons = <Lesson>[].obs;
-  List<ManagerSchedule> managerSchedules = [];
+  Map<int, ManagerSchedule> managerSchedules = {};
 
   final format = DateFormat("yy년 MM월 dd일");
 
@@ -123,7 +123,7 @@ class CalendarUseCase extends GetxController {
 
   bool _checkIsAvailable(DateTime event, Duration duration, bool isAvailable) {
     //해당 요일의 스케쥴
-    ManagerSchedule schedule = managerSchedules[event.weekday - 1];
+    ManagerSchedule schedule = managerSchedules[DateTime.now().weekday]!;
     //옵션 상 예약 가능 한지 확인
     final nowTime = DateTime.now();
     //사전 예약 가능 날자 확인
