@@ -24,7 +24,7 @@ class BannerModule extends StatelessWidget {
           items: List.generate(
               banners.length, (index) => buildBanner(context, index)),
           options: CarouselOptions(
-              autoPlay: true, viewportFraction: 1, aspectRatio: 3.9 / 1)),
+              autoPlay: true, viewportFraction: 1, aspectRatio: 6)),
     );
   }
 

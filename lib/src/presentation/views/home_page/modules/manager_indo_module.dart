@@ -47,7 +47,6 @@ class ManagerInfoModule extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 8),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
@@ -55,8 +54,6 @@ class ManagerInfoModule extends StatelessWidget {
                         Text(" 프로", style: TextStyle(color: Colors.white, fontSize: 8))
                       ],
                     ),
-                    SizedBox(height: 4),
-                    Text("${branch.branch}점", style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold))
                   ],
                 )
               ],
