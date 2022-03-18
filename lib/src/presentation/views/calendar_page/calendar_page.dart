@@ -25,8 +25,8 @@ class CalendarPage extends StatelessWidget {
                 Flexible(
                   child: MonthlyCalendarModule(useCase: viewModel.calendarUseCase),
                 ),
-                SingleChildScrollView(
-                  child: Flexible(
+                Flexible(
+                  child: SingleChildScrollView(
                     child: Container(
                       margin: EdgeInsets.symmetric(horizontal: 8),
                       child: Column(
@@ -35,7 +35,7 @@ class CalendarPage extends StatelessWidget {
                           const Divider(color: Colors.black),
                           Obx(() => Text(viewModel.now.value)),
                           buildLessonTile(user: viewModel.user!, manager: viewModel.manager!),
-                          LessonListModule(matchLessons: viewModel.calendarUseCase.dayLessons),
+                          Center(child: LessonListModule(matchLessons: viewModel.calendarUseCase.dayLessons)),
                         ],
                       ),
                     ),

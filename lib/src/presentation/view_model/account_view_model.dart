@@ -32,9 +32,10 @@ class AccountViewModel extends GetxController {
 
   Future getProfileImage() async {
     ImagePicker picker = ImagePicker();
+    final imageCropper = ImageCropper();
     XFile? image = await picker.pickImage(source: ImageSource.gallery);
     if(image != null) {
-      await ImageCropper.cropImage(sourcePath: image.path).then((value) async {
+      await imageCropper.cropImage(sourcePath: image.path).then((value) async {
         if(value != null) {
           await _profileRepository.uploadImage(value, user.uid).then((value) async {
             user = user.copyWith(profileImg: value);

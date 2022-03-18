@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
+import 'package:rainbow1872/src/core/utils/log.dart';
 import 'package:rainbow1872/src/data/models/lesson.dart';
 import 'package:rainbow1872/src/data/models/manager.dart';
 import 'package:rainbow1872/src/data/models/manager_schedule.dart';
@@ -23,6 +24,7 @@ class CalendarUseCase extends GetxController {
   final Rx<DateTime> focusDay = DateTime.now().obs;
   final Rx<DateTime> selectDay = DateTime.now().obs;
   RxList<LessonEvent> timeTable = <LessonEvent>[].obs;
+  RxList<LessonEvent> monthlyTimetable = <LessonEvent>[].obs;
 
   final scrollController = ScrollController();
 
@@ -49,7 +51,12 @@ class CalendarUseCase extends GetxController {
     manager = _managerBox.read(Manager.boxName);
     _option = await _reserveOptionRepository.get(user!.ableReservation);
     lessons.addAll(await _lessonRepository.getAll(user!.uid));
-    dayLessons.addAll(lessons.where((element) => DateTime.fromMillisecondsSinceEpoch(element.lessonDateTime).day == selectDay.value.day));
+    dayLessons.addAll(lessons.where((element) {
+      final lessonTime = DateTime
+          .fromMillisecondsSinceEpoch(element.lessonDateTime);
+      return
+        DateTime(lessonTime.year, lessonTime.month, lessonTime.day) == DateTime(selectDay.value.year, selectDay.value.month, selectDay.value.day);
+    }));
     managerSchedules.addAll(await _managerScheduleRepository.get(manager!.uid));
     now.value = format.format(DateTime.now());
     setTimeTable(DateTime.now());
@@ -57,7 +64,13 @@ class CalendarUseCase extends GetxController {
       now.value = format.format(event);
       setTimeTable(event);
       dayLessons.clear();
-      dayLessons.addAll(lessons.where((element) => DateTime.fromMillisecondsSinceEpoch(element.lessonDateTime).day == selectDay.value.day));
+      dayLessons.addAll(lessons.where((element) {
+          final lessonTime = DateTime
+              .fromMillisecondsSinceEpoch(element.lessonDateTime);
+          Log.d("${DateTime(lessonTime.year, lessonTime.month, lessonTime.day)} : ${DateTime(event.year, event.month, event.day)}");
+          return
+            DateTime(lessonTime.year, lessonTime.month, lessonTime.day) == DateTime(event.year, event.month, event.day);
+        }));
     });
     _lessonRepository.getStream(user!.uid).listen((event) {
       event.docChanges.forEach((element) {
