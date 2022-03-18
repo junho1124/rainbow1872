@@ -77,7 +77,7 @@ class HomeViewModel extends GetxController {
     ManagerState result = ManagerState(stateColor: Colors.red, state: "근무 종료");
     final weekDay = DateTime.now().weekday;
     final schedule = managerSchedule[weekDay];
-    final now = DateTime.now().millisecondsSinceEpoch;
+    final now = Duration(hours: DateTime.now().hour, minutes: DateTime.now().minute).inMilliseconds;
     if(schedule!.workingStart <= now && now <= schedule.workingFinish) {
       result = ManagerState(stateColor: AppTheme.stateGreen, state: "현재 근무 중");
       if(schedule.restStart != null) {
