@@ -16,6 +16,15 @@ class UserRepository extends FireRepository<User> {
     });
   }
 
+  Future<User?> getByUid(String key) async {
+    return await super.db.collection("user").where("uid", isEqualTo: key).get().then((value) {
+      final user = User.fromJson(value.docs.first.data());
+      _userBox.write(User.boxName, user);
+      _userBox.save();
+      return user;
+    });
+  }
+
   @override
   Future<User?> update(User item) async {
     return await super.db.collection("user").where("phone", isEqualTo: item.phone).get().then((value) async {
@@ -53,19 +62,12 @@ class UserRepository extends FireRepository<User> {
     });
   }
 
-  Future membershipCountChange(String uid) async {
+  Future membershipCountChange(String uid, int membershipCount) async {
     await db.collection("user").where("uid", isEqualTo: uid).get().then((value) {
       final user = User.fromJson(value.docs.first.data());
-      final updateUser = user.copyWith(lessonMembershipUsed: user.lessonMembershipUsed + 1);
-      db.doc(value.docs.first.id).set(updateUser.toJson());
+      final updateUser = user.copyWith(lessonMembershipUsed: user.lessonMembershipUsed + membershipCount);
+      db.collection("user").doc(value.docs.first.id).set(updateUser.toJson());
     });
   }
 
-  Future cancelCountChange(String uid) async {
-    await db.collection("user").where("uid", isEqualTo: uid).get().then((value) {
-      final user = User.fromJson(value.docs.first.data());
-      final updateUser = user.copyWith(lessonCancelCount: user.lessonCancelCount + 1);
-      db.doc(value.docs.first.id).set(updateUser.toJson());
-    });
-  }
 }

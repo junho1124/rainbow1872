@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rainbow1872/main.dart';
@@ -19,98 +18,104 @@ class ReservationPage extends StatelessWidget {
           return Scaffold(
             drawer: MyDrawer(),
             appBar: defaultAppBar(title: "예약"),
-            body: Column(
+            body: Obx(() => viewModel.calendarUseCase.isInit.isTrue ? Column(
               children: [
                 MonthlyCalendarModule(useCase: viewModel.calendarUseCase),
                 Divider(
                   color: Colors.black,
                 ),
-                Obx(() => Text("최준호 프로님 / ${viewModel.calendarUseCase.now}",
+                Obx(() => Text("${viewModel.calendarUseCase.manager!.name} 프로님 / ${viewModel.calendarUseCase.now}",
                     style:
                     TextStyle(fontSize: 22, fontWeight: FontWeight.w500))),
                 Obx(() => Expanded(
-                      child: viewModel.calendarUseCase.unReservable.isFalse
-                          ? ListView.builder(
-                              shrinkWrap: true,
-                              controller: viewModel.calendarUseCase.scrollController,
-                              itemCount: viewModel.calendarUseCase.timeTable.length,
-                              itemBuilder: (context, index) => Container(
-                                    alignment: Alignment.center,
-                                    height: 50,
-                                    width: double.infinity,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Text(
-                                          "${viewModel.calendarUseCase.timeTable[index].duration.inHours} : ${(viewModel.calendarUseCase.timeTable[index].duration.inMinutes % 60).bitLength == 0 ? "00" : (viewModel.calendarUseCase.timeTable[index].duration.inMinutes % 60)}",
-                                          style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                        InkWell(
-                                          onTap: () {
-                                            if (viewModel.calendarUseCase.timeTable[index]
-                                                    .isAvailable &&
-                                                !viewModel.calendarUseCase.timeTable[index]
-                                                    .isReserved) {
-                                              viewModel.showReservationDialog(
-                                                  context, index);
-                                            }
-                                          },
-                                          child: Container(
-                                            height: 40,
-                                            width: context.width * 0.6,
-                                            decoration: BoxDecoration(
-                                                color: viewModel
-                                                        .calendarUseCase.timeTable[index]
-                                                        .isReserved
-                                                    ? Colors.blue
-                                                    : viewModel.calendarUseCase.timeTable[index]
-                                                            .isAvailable
-                                                        ? Colors.blueGrey
-                                                        : Colors.red),
-                                            child: Center(
-                                                child: Text(
-                                              viewModel.calendarUseCase.timeTable[index]
-                                                      .isReserved
-                                                  ? "레슨 예약됨"
-                                                  : viewModel.calendarUseCase.timeTable[index]
-                                                          .isAvailable
-                                                      ? "예약하기"
-                                                      : "예약불가",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 16),
-                                            )),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ))
-                          : Container(
-                        padding: EdgeInsets.symmetric(vertical: 16),
-                              width: double.infinity,
-                              child: Column(
-                                children: [
-                                  Expanded(
-                                      child: Container(
-                                          padding: const EdgeInsets.symmetric(horizontal: 30),
-                                          width: double.infinity,
-                                          child: Image.asset(
-                                            "assets/banner_unable_reserve.png",
-                                            fit: BoxFit.cover,
-                                          ))),
-                                  const Text("선택하신 날자는 예약이 불가능합니다.",
-                                      style: TextStyle(
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.w500))
-                                ],
-                              ),
+                  child: viewModel.calendarUseCase.unReservable.isFalse
+                      ? ListView.builder(
+                      shrinkWrap: true,
+                      controller: viewModel.calendarUseCase.scrollController,
+                      itemCount: viewModel.calendarUseCase.timeTable.length,
+                      itemBuilder: (context, index) => Container(
+                        alignment: Alignment.center,
+                        height: 50,
+                        width: double.infinity,
+                        child: Row(
+                          mainAxisAlignment:
+                          MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                              "${viewModel.calendarUseCase.timeTable[index].duration.inHours} : ${(viewModel.calendarUseCase.timeTable[index].duration.inMinutes % 60).bitLength == 0 ? "00" : (viewModel.calendarUseCase.timeTable[index].duration.inMinutes % 60)}",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
                             ),
-                    ))
+                            InkWell(
+                              onTap: () {
+                                if(viewModel.calendarUseCase.user!.lessonMembership - viewModel.calendarUseCase.user!.lessonMembershipUsed <= 0) {
+                                  Get.defaultDialog(
+                                    title: "레슨권을 모두 사용 하셨습니다.",
+                                    middleText: "레슨권을 갱신 해 주세요.",
+                                    textCancel: "뒤로가기",
+                                  );
+                                } else if (viewModel.calendarUseCase.timeTable[index]
+                                    .isAvailable &&
+                                    !viewModel.calendarUseCase.timeTable[index]
+                                        .isReserved) {
+                                  viewModel.showReservationDialog(
+                                      context, index);
+                                }
+                              },
+                              child: Container(
+                                height: 40,
+                                width: context.width * 0.6,
+                                decoration: BoxDecoration(
+                                    color: viewModel
+                                        .calendarUseCase.timeTable[index]
+                                        .isReserved
+                                        ? Colors.blue
+                                        : viewModel.calendarUseCase.timeTable[index]
+                                        .isAvailable
+                                        ? Colors.blueGrey
+                                        : Colors.red),
+                                child: Center(
+                                    child: Text(
+                                      viewModel.calendarUseCase.timeTable[index]
+                                          .isReserved
+                                          ? "레슨 예약됨"
+                                          : viewModel.calendarUseCase.timeTable[index]
+                                          .isAvailable
+                                          ? "예약하기"
+                                          : "예약불가",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16),
+                                    )),
+                              ),
+                            )
+                          ],
+                        ),
+                      ))
+                      : Container(
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    width: double.infinity,
+                    child: Column(
+                      children: [
+                        Expanded(
+                            child: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 30),
+                                width: double.infinity,
+                                child: Image.asset(
+                                  "assets/banner_unable_reserve.png",
+                                  fit: BoxFit.cover,
+                                ))),
+                        const Text("선택하신 날자는 예약이 불가능합니다.",
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.w500))
+                      ],
+                    ),
+                  ),
+                ))
               ],
-            ),
+            ) : Container()),
           );
         });
   }

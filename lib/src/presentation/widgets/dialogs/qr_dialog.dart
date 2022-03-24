@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-void showQRImage(String uid, BuildContext context) {
+void showQRImage(String uid, BuildContext context, VoidCallback onTap) {
   showDialog(context: context, builder: (_) => AlertDialog(
     insetPadding: EdgeInsets.symmetric(horizontal: 20),
     content: SingleChildScrollView(
@@ -10,7 +10,7 @@ void showQRImage(String uid, BuildContext context) {
         children: <Widget>[
           Container(
             child: Text(
-              'QR',
+              '담당 프로님에게 보여주세요',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
           ),
@@ -24,6 +24,20 @@ void showQRImage(String uid, BuildContext context) {
               data: uid,
             ),
           ),
+          InkWell(
+            onTap: () {
+              onTap.call();
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.lightBlueAccent
+              ),
+              height: 40,
+              width: double.infinity,
+              child: Center(child: Text("완료", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)),
+            ),
+          )
         ],
       ),
     ),

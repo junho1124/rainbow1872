@@ -28,6 +28,7 @@ class CalendarPage extends StatelessWidget {
                 Flexible(
                   child: SingleChildScrollView(
                     child: Container(
+                      height: context.height * 0.6,
                       margin: EdgeInsets.symmetric(horizontal: 8),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,7 +36,7 @@ class CalendarPage extends StatelessWidget {
                           const Divider(color: Colors.black),
                           Obx(() => Text(viewModel.now.value)),
                           buildLessonTile(user: viewModel.user!, manager: viewModel.manager!),
-                          Center(child: LessonListModule(matchLessons: viewModel.calendarUseCase.dayLessons)),
+                          Expanded(child: LessonListModule(matchLessons: viewModel.calendarUseCase.dayLessons)),
                         ],
                       ),
                     ),

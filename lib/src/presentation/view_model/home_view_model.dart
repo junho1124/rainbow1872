@@ -14,6 +14,7 @@ import 'package:rainbow1872/src/data/repositoris/branch_repository.dart';
 import 'package:rainbow1872/src/data/repositoris/lesson_repository.dart';
 import 'package:rainbow1872/src/data/repositoris/manager_repository.dart';
 import 'package:rainbow1872/src/data/repositoris/manager_schedule_repository.dart';
+import 'package:rainbow1872/src/data/repositoris/user_repository.dart';
 import 'package:rainbow1872/src/domain/entities/manager_state.dart';
 import 'package:rainbow1872/src/domain/use_case/calendar_use_case.dart';
 
@@ -22,13 +23,14 @@ class HomeViewModel extends GetxController {
   final _bannerRepository = BannerRepository();
   final _managerRepository = ManagerRepository();
   final _lessonRepository = LessonRepository();
+  final _userRepository = UserRepository();
   final _managerScheduleRepository = ManagerScheduleRepository();
 
   final calendarUseCase = CalendarUseCase();
 
   final _userBox = GetStorage(User.boxName);
 
-  late User user;
+  late Rx<User> user;
   late Branch branch;
   late List<bn.Banner> banners;
   late List<Lesson> lessons;
@@ -43,11 +45,12 @@ class HomeViewModel extends GetxController {
 
   @override
   void onInit() async {
-    user = await _userBox.read(User.boxName);
-    branch = await _branchRepository.get(user.branch);
+    final User _user = await _userBox.read(User.boxName);
+    user = _user.obs;
+    branch = await _branchRepository.get(user.value.branch);
     banners = await _bannerRepository.getAll();
-    manager = await _managerRepository.get(user.proUid);
-    lessons = await _lessonRepository.getAll(user.uid);
+    manager = await _managerRepository.get(user.value.proUid);
+    lessons = await _lessonRepository.getAll(user.value.uid);
     managerSchedule.addAll(await _managerScheduleRepository.get(manager.uid));
     calendarUseCase.onInit();
     missingLessons.addAll(lessons.where((element) => !element.memberChecked));
@@ -62,6 +65,11 @@ class HomeViewModel extends GetxController {
     super.onInit();
   }
 
+  void onTapQR() async {
+    await _userRepository.getByUid(user.value.uid).then((value) => value != null ? user.value = value : null);
+    Get.back();
+  }
+
   Future getStoreCondition() async {
     switch(branch.status) {
       case "low" :
@@ -72,6 +80,8 @@ class HomeViewModel extends GetxController {
         return storeState = "보통";
    }
   }
+
+
 
   ManagerState getManagerState() {
     ManagerState result = ManagerState(stateColor: Colors.red, state: "근무 종료");

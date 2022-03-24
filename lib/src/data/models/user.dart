@@ -15,7 +15,6 @@ class User with _$User {
     required String email,
     required String gender,
     required bool lessonAvailable,
-    required int lessonCancelCount,
     required int lessonMembership,
     required int lessonMembershipEnd,
     required int lessonMembershipPeriod,

@@ -8,6 +8,7 @@ class Manager with _$Manager {
   static const String boxName = "Manager";
   factory Manager({
     required String branch,
+    required int? closeToday,
     required String email,
     required String name,
     required String phone,

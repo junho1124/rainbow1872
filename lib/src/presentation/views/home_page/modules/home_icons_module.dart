@@ -12,10 +12,12 @@ class HomeIconsModule extends StatelessWidget {
     Key? key,
     required this.assets,
     required this.user,
+    required this.onTapQR,
   }) : super(key: key);
 
   final List<String> assets;
   final User user;
+  final VoidCallback onTapQR;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class HomeIconsModule extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               buildHomeCard(context, assets[3], () => Get.toNamed(AccountPage.PATH)),
-              buildHomeCard(context, assets[4], () => showQRImage(user.uid, context)),
+              buildHomeCard(context, assets[4], () => showQRImage(user.uid, context, onTapQR)),
               buildHomeCard(context, assets[5], () {}),
             ]
         ),

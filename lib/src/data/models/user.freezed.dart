@@ -30,7 +30,6 @@ class _$UserTearOff {
       required String email,
       required String gender,
       required bool lessonAvailable,
-      required int lessonCancelCount,
       required int lessonMembership,
       required int lessonMembershipEnd,
       required int lessonMembershipPeriod,
@@ -53,7 +52,6 @@ class _$UserTearOff {
       email: email,
       gender: gender,
       lessonAvailable: lessonAvailable,
-      lessonCancelCount: lessonCancelCount,
       lessonMembership: lessonMembership,
       lessonMembershipEnd: lessonMembershipEnd,
       lessonMembershipPeriod: lessonMembershipPeriod,
@@ -88,7 +86,6 @@ mixin _$User {
   String get email => throw _privateConstructorUsedError;
   String get gender => throw _privateConstructorUsedError;
   bool get lessonAvailable => throw _privateConstructorUsedError;
-  int get lessonCancelCount => throw _privateConstructorUsedError;
   int get lessonMembership => throw _privateConstructorUsedError;
   int get lessonMembershipEnd => throw _privateConstructorUsedError;
   int get lessonMembershipPeriod => throw _privateConstructorUsedError;
@@ -121,7 +118,6 @@ abstract class $UserCopyWith<$Res> {
       String email,
       String gender,
       bool lessonAvailable,
-      int lessonCancelCount,
       int lessonMembership,
       int lessonMembershipEnd,
       int lessonMembershipPeriod,
@@ -155,7 +151,6 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? email = freezed,
     Object? gender = freezed,
     Object? lessonAvailable = freezed,
-    Object? lessonCancelCount = freezed,
     Object? lessonMembership = freezed,
     Object? lessonMembershipEnd = freezed,
     Object? lessonMembershipPeriod = freezed,
@@ -200,10 +195,6 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.lessonAvailable
           : lessonAvailable // ignore: cast_nullable_to_non_nullable
               as bool,
-      lessonCancelCount: lessonCancelCount == freezed
-          ? _value.lessonCancelCount
-          : lessonCancelCount // ignore: cast_nullable_to_non_nullable
-              as int,
       lessonMembership: lessonMembership == freezed
           ? _value.lessonMembership
           : lessonMembership // ignore: cast_nullable_to_non_nullable
@@ -277,7 +268,6 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String email,
       String gender,
       bool lessonAvailable,
-      int lessonCancelCount,
       int lessonMembership,
       int lessonMembershipEnd,
       int lessonMembershipPeriod,
@@ -312,7 +302,6 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? email = freezed,
     Object? gender = freezed,
     Object? lessonAvailable = freezed,
-    Object? lessonCancelCount = freezed,
     Object? lessonMembership = freezed,
     Object? lessonMembershipEnd = freezed,
     Object? lessonMembershipPeriod = freezed,
@@ -357,10 +346,6 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.lessonAvailable
           : lessonAvailable // ignore: cast_nullable_to_non_nullable
               as bool,
-      lessonCancelCount: lessonCancelCount == freezed
-          ? _value.lessonCancelCount
-          : lessonCancelCount // ignore: cast_nullable_to_non_nullable
-              as int,
       lessonMembership: lessonMembership == freezed
           ? _value.lessonMembership
           : lessonMembership // ignore: cast_nullable_to_non_nullable
@@ -432,7 +417,6 @@ class _$_User implements _User {
       required this.email,
       required this.gender,
       required this.lessonAvailable,
-      required this.lessonCancelCount,
       required this.lessonMembership,
       required this.lessonMembershipEnd,
       required this.lessonMembershipPeriod,
@@ -465,8 +449,6 @@ class _$_User implements _User {
   @override
   final bool lessonAvailable;
   @override
-  final int lessonCancelCount;
-  @override
   final int lessonMembership;
   @override
   final int lessonMembershipEnd;
@@ -497,7 +479,7 @@ class _$_User implements _User {
 
   @override
   String toString() {
-    return 'User(ableReservation: $ableReservation, available: $available, branch: $branch, birth: $birth, email: $email, gender: $gender, lessonAvailable: $lessonAvailable, lessonCancelCount: $lessonCancelCount, lessonMembership: $lessonMembership, lessonMembershipEnd: $lessonMembershipEnd, lessonMembershipPeriod: $lessonMembershipPeriod, lessonMembershipStart: $lessonMembershipStart, lessonMembershipType: $lessonMembershipType, lessonMembershipUsed: $lessonMembershipUsed, memo: $memo, name: $name, phone: $phone, point: $point, pro: $pro, proUid: $proUid, profileImg: $profileImg, uid: $uid)';
+    return 'User(ableReservation: $ableReservation, available: $available, branch: $branch, birth: $birth, email: $email, gender: $gender, lessonAvailable: $lessonAvailable, lessonMembership: $lessonMembership, lessonMembershipEnd: $lessonMembershipEnd, lessonMembershipPeriod: $lessonMembershipPeriod, lessonMembershipStart: $lessonMembershipStart, lessonMembershipType: $lessonMembershipType, lessonMembershipUsed: $lessonMembershipUsed, memo: $memo, name: $name, phone: $phone, point: $point, pro: $pro, proUid: $proUid, profileImg: $profileImg, uid: $uid)';
   }
 
   @override
@@ -514,8 +496,6 @@ class _$_User implements _User {
             const DeepCollectionEquality().equals(other.gender, gender) &&
             const DeepCollectionEquality()
                 .equals(other.lessonAvailable, lessonAvailable) &&
-            const DeepCollectionEquality()
-                .equals(other.lessonCancelCount, lessonCancelCount) &&
             const DeepCollectionEquality()
                 .equals(other.lessonMembership, lessonMembership) &&
             const DeepCollectionEquality()
@@ -549,7 +529,6 @@ class _$_User implements _User {
         const DeepCollectionEquality().hash(email),
         const DeepCollectionEquality().hash(gender),
         const DeepCollectionEquality().hash(lessonAvailable),
-        const DeepCollectionEquality().hash(lessonCancelCount),
         const DeepCollectionEquality().hash(lessonMembership),
         const DeepCollectionEquality().hash(lessonMembershipEnd),
         const DeepCollectionEquality().hash(lessonMembershipPeriod),
@@ -586,7 +565,6 @@ abstract class _User implements User {
       required String email,
       required String gender,
       required bool lessonAvailable,
-      required int lessonCancelCount,
       required int lessonMembership,
       required int lessonMembershipEnd,
       required int lessonMembershipPeriod,
@@ -618,8 +596,6 @@ abstract class _User implements User {
   String get gender;
   @override
   bool get lessonAvailable;
-  @override
-  int get lessonCancelCount;
   @override
   int get lessonMembership;
   @override

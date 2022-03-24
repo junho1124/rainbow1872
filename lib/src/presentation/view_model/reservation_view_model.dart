@@ -26,7 +26,7 @@ class ReservationViewModel extends GetxController {
     Rx<Duration> duration = Duration(minutes: 15).obs;
     final offset = Duration(minutes: 15);
     Get.defaultDialog(
-      title: "${calendarUseCase.now} 오전 ${calendarUseCase.timeTable[index].duration.inHours} : ${calendarUseCase.timeTable[index].duration.inMinutes % 60}",
+      title: "${calendarUseCase.now} 오전 ${calendarUseCase.timeTable[index].duration.inHours} : ${calendarUseCase.timeTable[index].duration.inMinutes % 60 == 0 ? "00" : calendarUseCase.timeTable[index].duration.inMinutes % 60}",
       content: Column(
         children: [
           Container(
@@ -79,9 +79,17 @@ class ReservationViewModel extends GetxController {
       ),
       confirm: InkWell(
         onTap: () async {
-          await confirmDialog(index, duration.value).then((value) {
-            if(value) Get.back();
-          });
+          if(calendarUseCase.user!.lessonMembership - calendarUseCase.user!.lessonMembershipUsed < duration.value.inMinutes ~/ 15) {
+            Get.defaultDialog(
+              title: "레슨권 횟수 부족",
+              middleText: "현재 ${calendarUseCase.user!.lessonMembership - calendarUseCase.user!.lessonMembershipUsed}개의 레슨권이 남아있습니다.\n레슨시간을 조절 해 주세요",
+              textCancel: "뒤로가기"
+            );
+          } else {
+            await confirmDialog(index, duration.value).then((value) {
+              if (value) Get.back();
+            });
+          }
         },
         child: Container(
           width: context.width * 0.3,

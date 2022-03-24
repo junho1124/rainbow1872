@@ -10,7 +10,7 @@ class LessonReviewViewModel extends GetxController {
 
   @override
   void onInit() async {
-    _lessonRepository.getStream(useCase.user!.uid).listen((event) {
+    _lessonRepository.getStream(useCase.user!.value.uid).listen((event) {
       event.docChanges.forEach((element) {
         final update = Lesson.fromJson(element.doc.data()!);
         useCase.lessons.removeWhere((element) => element.lessonDateTime == update.lessonDateTime);

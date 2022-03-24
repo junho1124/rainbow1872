@@ -60,8 +60,8 @@ class AccountPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("ASDDGF", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),),
-                    Text("시간: 15분 / 30회 레슨권 / 3개월", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+                    Text(viewModel.user.lessonMembershipType, style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),),
+                    Text(switchMembershipType(viewModel.user.lessonMembershipType), style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
                   ],
                 ),
               )
@@ -70,5 +70,24 @@ class AccountPage extends StatelessWidget {
         );
       }
     );
+  }
+
+  String switchMembershipType(String membershipType) {
+    switch(membershipType) {
+      case "v10m1" :
+        return "시간: 15분 / 10회 레슽권 / 1개월";
+      case "v20m3" :
+        return "시간: 15분 / 20회 레슽권 / 3개월";
+      case "v30m3" :
+        return "시간: 15분 / 30회 레슽권 / 3개월";
+      case "v30m6" :
+        return "시간: 15분 / 30회 레슽권 / 6개월";
+      case "v50m6" :
+        return "시간: 15분 / 50회 레슽권 / 6개월";
+      case "v60m12" :
+        return "시간: 15분 / 60회 레슽권 / 12개월";
+      default:
+        return "시간: 15분 / 10회 레슽권 / 1개월";
+    }
   }
 }

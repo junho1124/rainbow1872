@@ -21,9 +21,8 @@ class LessonRepository extends FireRepository<Lesson> {
   @override
   Future update(Lesson item) async {
     await super.db.collection("lesson").where("lessonDateTime", isEqualTo: item.lessonDateTime).get().then((value) async {
-      Lesson lesson = Lesson.fromJson(value.docs.first.data());
-      lesson = lesson.copyWith(checkedTime: DateTime.now().millisecondsSinceEpoch, memberChecked: true);
-      await super.db.collection("lesson").doc(value.docs.first.id).set(lesson.toJson());
+      Lesson lesson = Lesson.fromJson(value.docs.where((element) => element.data()["uid"] == item.uid).first.data());
+      await super.db.collection("lesson").doc(value.docs.where((element) => element.data()["uid"] == item.uid).first.id).set(lesson.copyWith(checkedTime: DateTime.now().millisecondsSinceEpoch, memberChecked: true).toJson());
     });
   }
 

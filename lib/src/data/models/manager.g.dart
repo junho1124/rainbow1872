@@ -8,6 +8,7 @@ part of 'manager.dart';
 
 _$_Manager _$$_ManagerFromJson(Map<String, dynamic> json) => _$_Manager(
       branch: json['branch'] as String,
+      closeToday: json['closeToday'] as int?,
       email: json['email'] as String,
       name: json['name'] as String,
       phone: json['phone'] as String,
@@ -22,6 +23,7 @@ _$_Manager _$$_ManagerFromJson(Map<String, dynamic> json) => _$_Manager(
 Map<String, dynamic> _$$_ManagerToJson(_$_Manager instance) =>
     <String, dynamic>{
       'branch': instance.branch,
+      'closeToday': instance.closeToday,
       'email': instance.email,
       'name': instance.name,
       'phone': instance.phone,

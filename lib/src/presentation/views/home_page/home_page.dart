@@ -47,13 +47,13 @@ class HomePage extends StatelessWidget {
                         child: Column(
                           children: [
                             BannerModule(banners: viewModel.banners),
-                            UserInfoModule(user: viewModel.user, manager: viewModel.manager, branch: viewModel.branch),
+                            UserInfoModule(user: viewModel.user.value, manager: viewModel.manager, branch: viewModel.branch),
                             ManagerInfoModule(manager: viewModel.manager, branch: viewModel.branch, managerState: viewModel.getManagerState())
                           ],
                         ),
                       ),
                       SizedBox(height: 12.5),
-                      HomeIconsModule(assets: viewModel.assets, user: viewModel.user,),
+                      HomeIconsModule(assets: viewModel.assets, user: viewModel.user.value, onTapQR: () => viewModel.onTapQR(),),
                       WeeklyCalendarModule(useCase: viewModel.calendarUseCase, matchLessons: viewModel.calendarUseCase.dayLessons,),
                     ],
                   ),

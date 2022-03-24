@@ -27,7 +27,7 @@ class MissingReviewLessonPage extends StatelessWidget {
             appBar: defaultAppBar(title: "레슨 리뷰"),
             body: Obx(() => viewModel.useCase.isLoaded.isTrue ? Column(
               children: [
-                buildLessonTile(user: viewModel.useCase.user!, manager: viewModel.useCase.manager!),
+                buildLessonTile(user: viewModel.useCase.user!.value, manager: viewModel.useCase.manager!),
                 Expanded(
                   child: ListView.builder(
                       shrinkWrap: true,

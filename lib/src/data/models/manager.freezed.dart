@@ -24,6 +24,7 @@ class _$ManagerTearOff {
 
   _Manager call(
       {required String branch,
+      required int? closeToday,
       required String email,
       required String name,
       required String phone,
@@ -35,6 +36,7 @@ class _$ManagerTearOff {
       required String uid}) {
     return _Manager(
       branch: branch,
+      closeToday: closeToday,
       email: email,
       name: name,
       phone: phone,
@@ -58,6 +60,7 @@ const $Manager = _$ManagerTearOff();
 /// @nodoc
 mixin _$Manager {
   String get branch => throw _privateConstructorUsedError;
+  int? get closeToday => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
@@ -79,6 +82,7 @@ abstract class $ManagerCopyWith<$Res> {
       _$ManagerCopyWithImpl<$Res>;
   $Res call(
       {String branch,
+      int? closeToday,
       String email,
       String name,
       String phone,
@@ -101,6 +105,7 @@ class _$ManagerCopyWithImpl<$Res> implements $ManagerCopyWith<$Res> {
   @override
   $Res call({
     Object? branch = freezed,
+    Object? closeToday = freezed,
     Object? email = freezed,
     Object? name = freezed,
     Object? phone = freezed,
@@ -116,6 +121,10 @@ class _$ManagerCopyWithImpl<$Res> implements $ManagerCopyWith<$Res> {
           ? _value.branch
           : branch // ignore: cast_nullable_to_non_nullable
               as String,
+      closeToday: closeToday == freezed
+          ? _value.closeToday
+          : closeToday // ignore: cast_nullable_to_non_nullable
+              as int?,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -163,6 +172,7 @@ abstract class _$ManagerCopyWith<$Res> implements $ManagerCopyWith<$Res> {
   @override
   $Res call(
       {String branch,
+      int? closeToday,
       String email,
       String name,
       String phone,
@@ -186,6 +196,7 @@ class __$ManagerCopyWithImpl<$Res> extends _$ManagerCopyWithImpl<$Res>
   @override
   $Res call({
     Object? branch = freezed,
+    Object? closeToday = freezed,
     Object? email = freezed,
     Object? name = freezed,
     Object? phone = freezed,
@@ -201,6 +212,10 @@ class __$ManagerCopyWithImpl<$Res> extends _$ManagerCopyWithImpl<$Res>
           ? _value.branch
           : branch // ignore: cast_nullable_to_non_nullable
               as String,
+      closeToday: closeToday == freezed
+          ? _value.closeToday
+          : closeToday // ignore: cast_nullable_to_non_nullable
+              as int?,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -246,6 +261,7 @@ class __$ManagerCopyWithImpl<$Res> extends _$ManagerCopyWithImpl<$Res>
 class _$_Manager implements _Manager {
   _$_Manager(
       {required this.branch,
+      required this.closeToday,
       required this.email,
       required this.name,
       required this.phone,
@@ -261,6 +277,8 @@ class _$_Manager implements _Manager {
 
   @override
   final String branch;
+  @override
+  final int? closeToday;
   @override
   final String email;
   @override
@@ -282,7 +300,7 @@ class _$_Manager implements _Manager {
 
   @override
   String toString() {
-    return 'Manager(branch: $branch, email: $email, name: $name, phone: $phone, position: $position, proUrl: $proUrl, profileImg: $profileImg, restFinish: $restFinish, restStart: $restStart, uid: $uid)';
+    return 'Manager(branch: $branch, closeToday: $closeToday, email: $email, name: $name, phone: $phone, position: $position, proUrl: $proUrl, profileImg: $profileImg, restFinish: $restFinish, restStart: $restStart, uid: $uid)';
   }
 
   @override
@@ -291,6 +309,8 @@ class _$_Manager implements _Manager {
         (other.runtimeType == runtimeType &&
             other is _Manager &&
             const DeepCollectionEquality().equals(other.branch, branch) &&
+            const DeepCollectionEquality()
+                .equals(other.closeToday, closeToday) &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.phone, phone) &&
@@ -308,6 +328,7 @@ class _$_Manager implements _Manager {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(branch),
+      const DeepCollectionEquality().hash(closeToday),
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(phone),
@@ -332,6 +353,7 @@ class _$_Manager implements _Manager {
 abstract class _Manager implements Manager {
   factory _Manager(
       {required String branch,
+      required int? closeToday,
       required String email,
       required String name,
       required String phone,
@@ -346,6 +368,8 @@ abstract class _Manager implements Manager {
 
   @override
   String get branch;
+  @override
+  int? get closeToday;
   @override
   String get email;
   @override
